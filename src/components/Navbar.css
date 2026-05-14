@@ -1,0 +1,77 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  
+  
+}
+
+
+
+
+.nav-links {
+  display: flex;
+  justify-content: center; /* මැදට ගන්න */
+  gap: 40px; /* අකුරු අතර පරතරය වැඩි කරන්න */
+  list-style: none;
+  margin: 22px; /* ටිකක් ඉහලට යන්න */
+  padding: 10;
+}
+
+.nav-links li  {
+  color: rgb(255, 255, 255);
+  font-family: 'Poppins', sans-serif; /* ලස්සන modern font එකක් */
+  font-weight: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hover එක smooth වෙන්න */
+  text-transform: uppercase; /* ඔක්කොම capital අකුරු වෙන්න */
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.nav-links li:hover {
+  color: #00d2ff; /* ලස්සන ලා නිල් පාටක් */
+  transform: translateY(-3px);
+  font-size: 18.8px; /* Hover වෙද්දි ටිකක් ඉහලට යන්න */
+}
+
+.loginbtn1 {
+  background: linear-gradient(135deg, #ff6347, #ff4500); /* Tomato පාටට Gradient එකක් */
+  color: white;
+  border: none;
+  outline: none;
+  padding: 12px 30px; /* Size එක ටිකක් වැඩි කළා */
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px; /* සම්පූර්ණයෙන්ම වටකුරු (Pill shape) */
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3); /* ලාවට පේන shadow එකක් */
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-logo {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.loginbtn1:hover {
+  transform: translateY(-3px) scale(1.05); /* ටිකක් ඉස්සෙනවා */
+  box-shadow: 0 6px 20px rgba(255, 69, 0, 0.5); /* Shadow එක තව වැඩි වෙනවා */
+  filter: brightness(1.1);
+}
