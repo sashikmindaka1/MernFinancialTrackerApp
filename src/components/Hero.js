@@ -7,8 +7,6 @@ function Hero() {
 
 
     <>
-      <div style={{ backgroundColor: '#f0f0f0' }}>
-      </div>
       <Carousel/>
 
     </>

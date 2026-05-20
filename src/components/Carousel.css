@@ -1,0 +1,47 @@
+/* 💻 ප්‍රධාන කොටුව ලැප් එකේ වම් කෙළවරේ ඉඳන් දකුණු කෙළවරටම යනවා */
+.hero-carousel {
+  position: relative;
+  width: 100%; 
+  height: 500px !important; /* Thilakawardhana එකේ වගේම උස 500px කළා */
+  background-color: #f4f5f7; /* පින්තූරේ පසුබිම් පාටට ගැලපෙන ලස්සන Light Gray එකක් */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inside Wrappers */
+.slide-wrapper, .single-slide, .slide-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🚨 මෙන්න Thilakawardhana ලුක් එක ගන්න සුපිරිම වෙනස 🚨 */
+.slide-image img {
+  width: 100% !important; /* පින්තූරේ වම් කෙළවරේ ඉඳන් දකුණු කෙළවරටම බලෙන් අදිනවා */
+  height: 100% !important; /* උසත් 500px කොටුවටම හිර කරනවා */
+  max-width: none !important;
+  max-height: none !important;
+  
+  /* 💡 'stretch' නොවී ලස්සනට පිරෙන්න නිතරම 'cover' තමයි දෙන්න ඕනේ.
+     හැබැයි උඹේ පින්තූරේ අකුරු කැපෙන නිසා, අපි බ්‍රවුසර් එකට කියනවා පින්තූරේ වම් පැත්ත (අකුරු තියෙන පැත්ත) 
+     නිතරම Screen එක ඇතුළේ තියාගන්න කියලා. */
+  object-fit: cover !important; 
+  object-position: left center !important; /* 🚨 මේකෙන් අකුරු කැපෙන එක ගොඩක් දුරට බේරෙනවා මචං */
+}
+
+/* 📱 Mobile Screens (පින්තූරේ හැඩය අනුව Phone එකට ගැලපෙන්න උස auto හැදෙනවා) */
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: 300px !important; 
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-carousel {
+    height: 200px !important; 
+  }
+}
