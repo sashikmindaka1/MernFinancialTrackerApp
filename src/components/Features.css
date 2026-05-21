@@ -1,0 +1,48 @@
+/* 1. Main container wrapper for all 4 feature cards */
+.features-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 2rem; /* Spacing between cards */
+  padding: 4rem 2rem;
+  background-color: #f9fbf9; /* Very light background for the whole section */
+}
+
+/* 2. Style for the individual FinTech Card */
+.feature-card {
+  background-color: #f1f8f5; /* Light mint green interior */
+  border-radius: 12px; /* Smooth rounded corners */
+  border: 1px solid #c8e6c9; /* Subtle green-gray border */
+  box-shadow: 0px 4px 16px rgba(46, 125, 50, 0.08); /* Soft financial-themed shadow */
+  padding: 2rem; 
+  max-width: 280px; /* Fixed width for the cards */
+  flex: 1 1 250px;  /* Makes the card layout responsive */
+  
+  /* Smooth transition effect for hover animations */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 3. Hover effect when the mouse moves over the card */
+.feature-card:hover {
+  transform: translateY(-8px); /* Lifts the card upwards in 3D */
+  border-color: #2e7d32; /* Border changes to dark finance green */
+  box-shadow: 0px 12px 24px rgba(46, 125, 50, 0.15); /* Shadow becomes deeper and darker */
+  background-color: #e8f5e9; /* Background tint darkens slightly on hover */
+}
+
+/* 4. Title typography inside the card */
+.card-title {
+  color: #1b5e20; /* Dark green tone for headers */
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.75rem; /* Space below the title */
+}
+
+/* 5. Description typography inside the card */
+.card-desc {
+  color: #4a5d4e; /* Easy-to-read slate green-gray tone */
+  font-size: 0.95rem;
+  line-height: 1.6; /* Balanced line height for readability */
+  margin: 0;
+}

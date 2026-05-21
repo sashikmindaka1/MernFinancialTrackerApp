@@ -2,6 +2,8 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Features from './components/Features';
+import LiveUsers from './components/LiveUsers';
 import Footer from './components/Footer';
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       </header>
       <div>
         <Hero />
+        <Features />
+        <LiveUsers />
         <Footer />
       </div>
       

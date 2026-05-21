@@ -1,10 +1,9 @@
 import './Navbar.css';
-import logo from '../assests/logo.png';
 function Navbar() {
   return (
     <nav className="navbar">
       <div>
-        <img src={logo} alt="Logo" className='nav-logo'></img>
+        <img src="/assests/logo.png" alt="Logo" className='nav-logo'></img>
       </div>
       
         <ul className="nav-links">
