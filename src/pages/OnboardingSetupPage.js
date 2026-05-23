@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 
 
 function OnboardingSetupPage() {
   return (
 
     <div>
-      <Navbar />
+      <h1>Onboarding Setup Page</h1>
 
     </div>
 
