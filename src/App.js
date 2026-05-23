@@ -6,7 +6,6 @@ import { BrowserRouter, RouterProvider} from 'react-router-dom';
 import OnboardingSetupPage from './pages/OnboardingSetupPage';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Services from './components/Services';
 import Features from './components/Features';
 import LiveUsers from './components/LiveUsers';
 import Footer from './components/Footer';
