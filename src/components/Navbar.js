@@ -12,10 +12,10 @@ function Navbar() {
       </div>
       
         <ul className="nav-links">
-          <li><Link to="/services">Services</Link></li>
-          <li><Link to="/features">Features</Link></li>
-          <li><Link to="/pricing">Pricing</Link></li>
-          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/OnboardingSetupPage">Onboarding Setup</Link></li>
+          <li><Link to="/MainDashboardPage">Main Dashboard</Link></li>
+          <li><Link to="/Analytics&InsightsPage">Analytics & Insights</Link></li>
+          <li><Link to="/TransactionsHistoryPage">Transactions History</Link></li>
         </ul>
       
       <div>

@@ -2,13 +2,14 @@
 import './App.css';
 import React from 'react';
 import Layout from './components/Layout';
-import { BrowserRouter, RouterProvider} from 'react-router-dom';
+import { BrowserRouter, RouterProvider, createBrowserRouter} from 'react-router-dom';
 import OnboardingSetupPage from './pages/OnboardingSetupPage';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import LiveUsers from './components/LiveUsers';
-import Footer from './components/Footer';
+import MainDashboardPage from './pages/MainDashboardPage';
+import AnalyticsInsightsPage from './pages/AnalyticsInsightsPage';
+import Homepage from './pages/Homepage';
+import TransactionsHistoryPage from './pages/TransactionsHistoryPage';  
+
+
 
 const router = createBrowserRouter([
   {
@@ -18,15 +19,23 @@ const router = createBrowserRouter([
 
       {
         path: "/",
+        element: <Homepage />
+      },
+      {
+        path: "/OnboardingSetupPage",
         element: <OnboardingSetupPage />
       },
       {
-        path: "/services",
-        element: <Services />
+        path: "/MainDashboardPage",
+        element: <MainDashboardPage />
       },
       {
-        path: "/features",
-        element: <Features />
+        path: "/Analytics&InsightsPage",
+        element: <AnalyticsInsightsPage />
+      },
+      {
+        path: "/TransactionsHistoryPage",
+        element: <TransactionsHistoryPage />
       }
 
     ]
