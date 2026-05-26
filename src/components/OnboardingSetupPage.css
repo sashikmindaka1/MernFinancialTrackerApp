@@ -1,0 +1,37 @@
+/* Full Screen Layout Wrapper */
+.onboarding-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f1115;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Ambient Neon Glows to fill empty background space */
+.neon-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  opacity: 0.08;
+  filter: blur(140px);
+  pointer-events: none; /* Prevents the glow elements from blocking button clicks */
+}
+
+/* Top Left Cyan Glow */
+.glow-top {
+  top: -100px;
+  left: -100px;
+  background-color: #00f2fe;
+}
+
+/* Bottom Right Neon Green Glow */
+.glow-bottom {
+  bottom: -100px;
+  right: -100px;
+  background-color: #00ff66;
+}
