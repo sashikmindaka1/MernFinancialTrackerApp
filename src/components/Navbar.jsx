@@ -15,22 +15,22 @@ function Navbar() {
       {/* NAV LINKS */}
       <ul className="flex justify-center gap-10 list-none m-0 p-0">
         <li>
-          <Link to="/OnboardingSetupPage" className="text-[14px] text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/OnboardingSetupPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Onboarding Setup
           </Link>
         </li>
         <li>
-          <Link to="/MainDashboardPage" className="text-[14px] text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/MainDashboardPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Main Dashboard
           </Link>
         </li>
         <li>
-          <Link to="/Analytics&InsightsPage" className="text-[14px] text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/Analytics&InsightsPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Analytics & Insights
           </Link>
         </li>
         <li>
-          <Link to="/TransactionsHistoryPage" className="text-[14px] text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/TransactionsHistoryPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Transactions History
           </Link>
         </li>
