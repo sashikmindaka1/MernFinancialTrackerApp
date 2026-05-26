@@ -2,10 +2,14 @@ import React from 'react';
 
 
 function OnboardingSetupPage() {
+
+  const [currentStep, setCurrentStep] = useState(0);
+
   return (
 
     <div>
-      <h1>Onboarding Setup Page</h1> 
+
+      
 
     </div>
 
