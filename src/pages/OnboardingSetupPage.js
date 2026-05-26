@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import IncomeeStep from '../components/IncomeeStep'; // Corrected relative path to components folder
-import './OnboardingSetupPage.css'; // Corrected path to the local stylesheet
+import '../components/OnboardingSetupPage.css'; // Corrected path to the local stylesheet
 
 function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
