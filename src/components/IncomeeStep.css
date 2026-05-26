@@ -1,0 +1,139 @@
+/* Central Premium Card Container */
+.income-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background-color: #161920;
+  border: 1px solid #232936;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+/* Custom Stepper Styles */
+.stepper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #232936;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.step-circle.active {
+  background-color: #00f2fe;
+  color: #0f1115;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.step-line {
+  flex: 0.2;
+  height: 2px;
+  background-color: #232936;
+  margin: 0 10px;
+}
+
+/* Heading Typography */
+.card-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+/* Wrapper container for the input box */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+/* Static "Rs." Prefix Label */
+.currency-symbol {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-weight: 600;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* Main Input Field */
+.currency-input {
+  width: 100%;
+  background-color: #0f1115;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 18px 18px 18px 58px; /* Left padding creates space for the static "Rs." text */
+  color: #ffffff;
+  font-size: 18px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.currency-input:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+/* Remove default increment/decrement arrows in Chrome, Safari, Edge, and Opera */
+.currency-input::-webkit-outer-spin-button,
+.currency-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove default increment/decrement arrows in Firefox */
+.currency-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Next Step Button */
+.btn-next {
+  width: 100%;
+  background-color: #00f2fe;
+  color: #0f1115;
+  font-weight: 700;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.btn-next:hover:not(:disabled) {
+  background-color: #00d2dc;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
+}
+
+.btn-next:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Disabled Button State Visuals */
+.btn-next:disabled {
+  background-color: #232936;
+  color: #475569;
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
