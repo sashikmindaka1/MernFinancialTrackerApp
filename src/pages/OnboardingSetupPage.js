@@ -1,15 +1,32 @@
 import React from 'react';
+import { useState } from 'react';
 
 
 function OnboardingSetupPage() {
 
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const [income, setIncome] = useState("");
+
+  function nextStep() {
+    currentStep < 3 && setCurrentStep(currentStep + 1);
+  }
+
+  function renderStep() {
+    switch(currentStep){
+      case 1:
+        return(<h1>Step 1: Income</h1>);
+      case 2:
+        return(<h1>Step 2: budget</h1>);
+     
+    }
+  }
 
   return (
 
     <div>
 
-      
+      {renderStep()}
 
     </div>
 
