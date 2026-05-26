@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import IncomeeStep from '../components/IncomeeStep';
 
 
 function OnboardingSetupPage() {
@@ -15,7 +16,13 @@ function OnboardingSetupPage() {
   function renderStep() {
     switch(currentStep){
       case 1:
-        return(<h1>Step 1: Income</h1>);
+        return(
+          <IncomeeStep
+          income = {income}
+          setIncome = {setIncome}
+          nextStep = {nextStep}
+          />
+        )
       case 2:
         return(<h1>Step 2: budget</h1>);
      
