@@ -10,6 +10,7 @@ function Hero() {
      <p className='hero-subheading'>Discover our amazing services and features</p>
      <button className='hero-btn'>Get Started</button>
 
+
     </div>
   )
 }export default Hero;
