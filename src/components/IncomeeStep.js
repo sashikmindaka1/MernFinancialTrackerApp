@@ -1,6 +1,6 @@
 import react from 'react';
 
-function IncomeeStep() {
+function IncomeeStep({income, setIncome, nextStep}) {
   
   return (
     <div>
