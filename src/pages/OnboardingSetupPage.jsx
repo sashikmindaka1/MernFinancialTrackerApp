@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import IncomeeStep from '../components/IncomeeStep'; // Corrected relative path to components folder
-import '../components/OnboardingSetupPage.css'; // Corrected path to the local stylesheet
+import IncomeeStep from '../components/IncomeeStep'; 
+import '../components/OnboardingSetupPage.css'; 
+import BudgetStep from '../components/BudgetStep';
 
 function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -11,16 +12,6 @@ function OnboardingSetupPage() {
   function nextStep() {
     currentStep < 3 && setCurrentStep(currentStep + 1);
   }
-
-
-  
-
-
-
-
-
-
-  
 
   // Conditional renderer to display the component corresponding to the active step
   function renderStep() {
