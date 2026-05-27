@@ -5,11 +5,22 @@ import '../components/OnboardingSetupPage.css'; // Corrected path to the local s
 function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [income, setIncome] = useState("");
+  const [budget, setBudget] = useState("");
 
   // Function to transition to the next step
   function nextStep() {
     currentStep < 3 && setCurrentStep(currentStep + 1);
   }
+
+
+  
+
+
+
+
+
+
+  
 
   // Conditional renderer to display the component corresponding to the active step
   function renderStep() {
@@ -23,7 +34,13 @@ function OnboardingSetupPage() {
           />
         );
       case 2:
-        return <h1 className="card-title">Step 2: Budget Allocation Coming Soon...</h1>;
+        return (
+          <BudgetStep
+            budget={budget}
+            setBudget={setBudget}
+            nextStep={nextStep}
+          />
+        );
       case 3:
         return <h1 className="card-title">Step 3: Review Coming Soon...</h1>;
       default:
