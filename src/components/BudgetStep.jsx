@@ -1,7 +1,7 @@
 import React from 'react';
 import IncomeeStep from './IncomeeStep';
 
-function BudgetStep({ budget, setBudget, nextStep }) {
+function BudgetStep({  income, budget, setBudget, nextStep }) {
 
   return (
     <div className="budget-card">
@@ -21,20 +21,24 @@ function BudgetStep({ budget, setBudget, nextStep }) {
       <div className="input-wrapper">
         {/* Static "Rs." prefix label pinned to the left side */}
         <span className="currency-symbol">Rs.</span>
-      </div>  
+        
 
       <input type = "number" 
              placeholder='Enter your budget' 
              value={budget} 
+             max={income}
              onChange={(e) => 
              setBudget(e.target.value)} 
              className='currency-input' />
+             
+
+      </div>       
 
 
       <button
         className="btn-next"
-        onclick = {nextStep}
-        disabled={ budget > IncomeeStep || budget<=0}>
+        onClick = {nextStep}
+        disabled={ !budget || Number(budget) <= 0 || Number(budget) > Number(income) }>
         next
       </button>
 
