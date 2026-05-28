@@ -30,7 +30,12 @@ function BudgetStep({  income, budget, setBudget, nextStep }) {
              onChange={(e) => 
              setBudget(e.target.value)} 
              className='currency-input' />
-             
+
+      <input type = "number" 
+      placeholder = "for food"  
+      className='currency-input' 
+      
+      />
 
       </div>       
 
