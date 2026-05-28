@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import IncomeeStep from '../components/IncomeeStep'; 
 import BudgetStep from '../components/BudgetStep';
+ // 👈 Import the new Review step
 
 function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -13,12 +14,10 @@ function OnboardingSetupPage() {
   const [healthBudget, setHealthBudget] = useState("");
   const [otherBudget, setOtherBudget] = useState("");
 
-  // Function to transition to the next step
   function nextStep() {
     currentStep < 3 && setCurrentStep(currentStep + 1);
   }
 
-  // Conditional renderer to display the component corresponding to the active step
   function renderStep() {
     switch(currentStep) {
       case 1:
@@ -31,7 +30,6 @@ function OnboardingSetupPage() {
         );
       case 2:
         return (
-          /* Passing all category budget states and setter functions as props */
           <BudgetStep
             income={income}
             budget={budget}
@@ -53,9 +51,17 @@ function OnboardingSetupPage() {
         );
       case 3:
         return (
-          <div className="z-10 w-full max-w-md p-6 bg-[#161920] border border-[#232836] rounded-2xl shadow-2xl text-center">
-            <h1 className="text-xl font-medium text-white">Step 3: Review Coming Soon...</h1>
-          </div>
+          /* 🚨 Passing all collected states to ReviewStep for final summary display */
+          <ReviewStep
+            income={income}
+            budget={budget}
+            foodBudget={foodBudget}
+            transportBudget={transportBudget}
+            billsBudget={billsBudget}
+            entertainmentBudget={entertainmentBudget}
+            healthBudget={healthBudget}
+            otherBudget={otherBudget}
+          />
         );
       default:
         return null;
@@ -63,16 +69,9 @@ function OnboardingSetupPage() {
   }
 
   return (
-    // 🌌 Full Screen Layout Wrapper styled with Tailwind CSS
     <div className="relative w-screen h-screen bg-[#0f1115] flex justify-center items-center overflow-hidden font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]">
-      
-      {/* 🔹 Ambient Neon Glows (Top Left Cyan Glow) */}
       <div className="absolute w-[600px] h-[600px] rounded-full opacity-5 filter blur-[140px] pointer-events-none -top-[100px] -left-[100px] bg-[#00f2fe]"></div>
-      
-      {/* 🔹 Ambient Neon Glows (Bottom Right Neon Green Glow) */}
       <div className="absolute w-[600px] h-[600px] rounded-full opacity-5 filter blur-[140px] pointer-events-none -bottom-[100px] -right-[100px] bg-[#00ff66]"></div>
-
-      {/* Renders the currently active onboarding step container */}
       {renderStep()}
     </div>
   );
