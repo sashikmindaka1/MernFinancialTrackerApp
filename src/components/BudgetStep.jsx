@@ -1,7 +1,7 @@
 import React from 'react';
 import IncomeeStep from './IncomeeStep';
 
-function BudgetStep({  income, budget, setBudget, nextStep }) {
+function BudgetStep({  income, budget, setBudget, nextStep, foodBudget, setFoodBudget, transportBudget, setTransportBudget, billsBudget, setBillsBudget, entertainmentBudget, setEntertainmentBudget, healthBudget, setHealthBudget, otherBudget, setOtherBudget }) {
 
   return (
     <div className="budget-card">
@@ -19,7 +19,7 @@ function BudgetStep({  income, budget, setBudget, nextStep }) {
       </h2>
 
       <div className="input-wrapper">
-        {/* Static "Rs." prefix label pinned to the left side */}
+      
         <span className="currency-symbol">Rs.</span>
         
 

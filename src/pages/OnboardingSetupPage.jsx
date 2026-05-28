@@ -7,6 +7,12 @@ function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [income, setIncome] = useState("");
   const [budget, setBudget] = useState("");
+  const[foodBudget, setFoodBudget] = useState("")
+  const [transportBudget, setTransportBudget] = useState("")
+  const [billsBudget, setBillsBudget] = useState("")
+  const [entertainmentBudget, setEntertainmentBudget] = useState("")
+  const[healthBudget, setHealthBudget] = useState("")
+  const [otherBudget, setOtherBudget] = useState("")
 
   // Function to transition to the next step
   function nextStep() {
@@ -27,6 +33,7 @@ function OnboardingSetupPage() {
       case 2:
         return (
           <BudgetStep
+            income={income}
             budget={budget}
             setBudget={setBudget}
             nextStep={nextStep}
