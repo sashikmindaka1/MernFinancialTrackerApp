@@ -1,3 +1,8 @@
+import react from "react";  
+
+
+
+
 function BudgetReview({income, budget, foodBudget, transportBudget, 
   billsBudget, entertainmentBudget, healthBudget, otherBudget}) {
 

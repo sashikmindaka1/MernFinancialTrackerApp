@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import IncomeeStep from '../components/IncomeeStep'; 
 import BudgetStep from '../components/BudgetStep';
- // 👈 Import the new Review step
+import BudgetReview from '../components/BudgetReview';  
+
 
 function OnboardingSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -52,7 +53,7 @@ function OnboardingSetupPage() {
       case 3:
         return (
           /* 🚨 Passing all collected states to ReviewStep for final summary display */
-          <ReviewStep
+          <BudgetReview
             income={income}
             budget={budget}
             foodBudget={foodBudget}
