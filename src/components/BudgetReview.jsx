@@ -11,7 +11,7 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
     const unAllocatedBudget = Number(budget) - totalAllocated
 
 
-  return(
+  return( 
 
     <div ClassName = "z-full w-full max-w-2xl p-8 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-4">
       <div ClassName = "grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
