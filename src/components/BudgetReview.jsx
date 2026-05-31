@@ -37,17 +37,49 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
           <p className="text-xl font-bold text-emerald-400">Rs. {saving.toLocaleString()}</p>
         </div>
 
-        <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-        <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">
-         Savings
-        </p>
-        <p className="text-xl font-bold text-indigo-400">
-        Rs. {saving.toLocaleString()}
-        </p>
-</div>
+
+
+
+
+
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">food budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {foodBudget.toLocaleString()}</p>
+       </div>
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">transport budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {transportBudget.toLocaleString()}</p>
+       </div>
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">bills budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {billsBudget.toLocaleString()}</p>
+       </div>
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">entertainment Budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {entertainmentBudget.toLocaleString()}</p>
+       </div>
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">health Budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {healthBudget.toLocaleString()}</p>
+       </div>
+
+       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">other Budget</p>
+         <p className="text-xl font-bold text-indigo-400">Rs. {otherBudget.toLocaleString()}</p>
+       </div>
 
       </div>
+
       
+      
+    </div>
+    <div>
+    <button>finish</button>
     </div>
   )
 
