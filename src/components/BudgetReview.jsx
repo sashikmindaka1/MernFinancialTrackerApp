@@ -18,7 +18,7 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
 
     <div className = "z-full w-full max-w-2xl p-8 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-4">
       <div className = "grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        // first card
+        
         {/* 1st Card: Total Income */}
         <div className="bg-[#1f242f] border border-[#232836] p-4 rounded-xl text-center">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Total Income</p>
@@ -36,6 +36,15 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Planned Savings</p>
           <p className="text-xl font-bold text-emerald-400">Rs. {saving.toLocaleString()}</p>
         </div>
+
+        <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
+        <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">
+         Savings
+        </p>
+        <p className="text-xl font-bold text-indigo-400">
+        Rs. {saving.toLocaleString()}
+        </p>
+</div>
 
       </div>
       
