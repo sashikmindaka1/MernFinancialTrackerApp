@@ -33,10 +33,12 @@ function BudgetReview({
   return (
     // Main Container Box
     <div className="w-full min-h-[650px] md:max-w-4xl p-6 md:p-10 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-auto flex flex-col justify-between">
-
-      <button className="w-10 py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
-      BACK 
-      </button>
+      
+      <button className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#1f242f] hover:bg-[#232936] border border-[#232836] text-gray-400 hover:text-[#00f2fe] transition duration-200 shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+     </button>
       
       
       <div>
@@ -113,7 +115,7 @@ function BudgetReview({
       
 
       <button className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
-        Finish Review
+        Finish
       </button>
 
     </div>

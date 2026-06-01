@@ -29,6 +29,12 @@ function BudgetStep({
   return (
     // Standardized premium container box matching the previous steps
     <div className="w-full min-h-[650px] md:max-w-4xl p-6 md:p-12 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-auto flex flex-col justify-between">
+
+      <button className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#1f242f] hover:bg-[#232936] border border-[#232836] text-gray-400 hover:text-[#00f2fe] transition duration-200 shadow-md">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+     </button>
       
       <div>
         {/* STEPPER: Progress Indicator */}
