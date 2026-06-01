@@ -1,88 +1,123 @@
-import react from "react";  
+import React from "react";  
 import CardHeader from '@mui/material/CardHeader'
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
 
+function BudgetReview({
+  income, 
+  budget, 
+  foodBudget, 
+  transportBudget, 
+  billsBudget, 
+  entertainmentBudget, 
+  healthBudget, 
+  otherBudget
+}) {
 
+  // Fallback to 0 if props are passed as undefined or empty strings to prevent errors
+  const numIncome = Number(income) || 0;
+  const numBudget = Number(budget) || 0;
+  
+  const numFood = Number(foodBudget) || 0;
+  const numTransport = Number(transportBudget) || 0;
+  const numBills = Number(billsBudget) || 0;
+  const numEntertainment = Number(entertainmentBudget) || 0;
+  const numHealth = Number(healthBudget) || 0;
+  const numOther = Number(otherBudget) || 0;
 
+  // Financial calculations
+  const saving = numIncome - numBudget;
+  const totalAllocated = numFood + numTransport + numBills + numEntertainment + numHealth + numOther;
+  const unAllocatedBudget = numBudget - totalAllocated;
 
-function BudgetReview({income, budget, foodBudget, transportBudget, 
-  billsBudget, entertainmentBudget, healthBudget, otherBudget}) {
+  return (
+    // Main Container Box
+    <div className="w-full min-h-[650px] md:max-w-4xl p-6 md:p-10 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-auto flex flex-col justify-between">
 
-    const saving = Number(income) - Number(budget) 
-    const totalAllocated = Number(foodBudget) + Number(transportBudget) + Number(billsBudget) + Number(entertainmentBudget) + Number(healthBudget) + Number(otherBudget);
-    const unAllocatedBudget = Number(budget) - totalAllocated
+      <button className="w-10 py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
+      BACK 
+      </button>
+      
+      
+      <div>
+        {/* TOP ROW: Core Metrics (Income, Budget, Savings) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="bg-[#1f242f] border border-[#232836] p-5 rounded-xl text-center shadow-md">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Total Income</p>
+            <p className="text-xl md:text-2xl font-bold text-white">Rs. {numIncome.toLocaleString()}</p>
+          </div>
 
+          <div className="bg-[#1f242f] border border-[#232836] p-5 rounded-xl text-center shadow-md">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Total Budget</p>
+            <p className="text-xl md:text-2xl font-bold text-[#00f2fe]">Rs. {numBudget.toLocaleString()}</p>
+          </div>
 
-  return( 
-
-    <div className = "z-full w-full max-h-9 p-8 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-4">
-      <div className = "grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        
-        {/* 1st Card: Total Income */}
-        <div className="bg-[#1f242f] border border-[#232836] p-4 rounded-xl text-center">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Total Income</p>
-          <p className="text-xl font-bold text-white">Rs. {Number(income).toLocaleString()}</p>
+          <div className="bg-[#1f242f] border border-[#232836] p-5 rounded-xl text-center shadow-md">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Planned Savings</p>
+            <p className="text-xl md:text-2xl font-bold text-emerald-400">Rs. {saving.toLocaleString()}</p>
+          </div>
         </div>
 
-        {/* 2nd Card: Total Budget */}
-        <div className="bg-[#1f242f] border border-[#232836] p-4 rounded-xl text-center">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Total Budget</p>
-          <p className="text-xl font-bold text-[#00f2fe]">Rs. {Number(budget).toLocaleString()}</p>
+        {/* SECTION HEADER: Category Breakdown & Unallocated Budget Alert */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-[#232836] pb-4 mb-6 gap-2">
+          <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wide">Category Breakdown</h3>
+          {unAllocatedBudget > 0 && (
+            <span className="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full font-medium">
+              Unallocated: Rs. {unAllocatedBudget.toLocaleString()} Remaining
+            </span>
+          )}
         </div>
 
-        {/* 3rd Card: Planned Savings */}
-        <div className="bg-[#1f242f] border border-[#232836] p-4 rounded-xl text-center">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Planned Savings</p>
-          <p className="text-xl font-bold text-emerald-400">Rs. {saving.toLocaleString()}</p>
+        {/* BOTTOM GRID: Individual Expense Budgets */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          {/* Food Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Food Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numFood.toLocaleString()}</p>
+          </div>
+
+          {/* Transport Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Transport Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numTransport.toLocaleString()}</p>
+          </div>
+
+          {/* Bills Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Bills Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numBills.toLocaleString()}</p>
+          </div>
+
+          {/* Entertainment Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Entertainment Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numEntertainment.toLocaleString()}</p>
+          </div>
+
+          {/* Health Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Health Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numHealth.toLocaleString()}</p>
+          </div>
+
+          {/* Other Budget */}
+          <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl shadow-sm transition hover:border-purple-900/50">
+            <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">Other Budget</p>
+            <p className="text-lg font-bold text-indigo-400">Rs. {numOther.toLocaleString()}</p>
+          </div>
         </div>
-
-
-
-
-
-
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">food budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {foodBudget.toLocaleString()}</p>
-       </div>
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">transport budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {transportBudget.toLocaleString()}</p>
-       </div>
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">bills budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {billsBudget.toLocaleString()}</p>
-       </div>
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">entertainment Budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {entertainmentBudget.toLocaleString()}</p>
-       </div>
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">health Budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {healthBudget.toLocaleString()}</p>
-       </div>
-
-       <div className="bg-[#1a1625] border border-[#261f35] p-4 rounded-xl text-center shadow-sm">
-         <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-1">other Budget</p>
-         <p className="text-xl font-bold text-indigo-400">Rs. {otherBudget.toLocaleString()}</p>
-       </div>
-
       </div>
 
-      <button className="">finish</button>
+      {/* ACTION BUTTON: Styled submit button pinned to the bottom */}
+
       
+
+      <button className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
+        Finish Review
+      </button>
+
     </div>
-  )
+  );
+}
 
-
-
-} export default BudgetReview;
-
- 
- 
+export default BudgetReview;
