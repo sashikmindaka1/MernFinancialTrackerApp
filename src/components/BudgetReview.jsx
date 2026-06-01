@@ -16,7 +16,7 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
 
   return( 
 
-    <div className = "z-full w-full max-w-2xl p-8 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-4">
+    <div className = "z-full w-full max-h-9 p-8 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-4">
       <div className = "grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         
         {/* 1st Card: Total Income */}
@@ -75,11 +75,8 @@ function BudgetReview({income, budget, foodBudget, transportBudget,
 
       </div>
 
+      <button className="">finish</button>
       
-      
-    </div>
-    <div>
-    <button>finish</button>
     </div>
   )
 
