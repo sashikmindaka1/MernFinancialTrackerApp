@@ -39,7 +39,7 @@ function MainDashboardPage() {
 
 
   return (
-    <div className="p-6 bg-[#0f1115] min-h-screen text-white">
+    <div className="pt-28 p-6 bg-[#0f1115] min-h-screen text-white">
     
       <BudgetShow
       income={income}
