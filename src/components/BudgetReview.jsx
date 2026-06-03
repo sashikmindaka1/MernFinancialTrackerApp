@@ -117,8 +117,18 @@ function BudgetReview({
       <button onClick={() => {
         localStorage.setItem("userIncome", income)
         localStorage.setItem("userBudget", budget)
-        alert("saved!")
+        localStorage.setItem("foodBudget", numFood);
+        localStorage.setItem("transportBudget", numTransport);
+        localStorage.setItem("billsBudget", numBills);
+        localStorage.setItem("entertainmentBudget", numEntertainment);
+        localStorage.setItem("healthBudget", numHealth);
+        localStorage.setItem("otherBudget", numOther);
+  
+        localStorage.setItem("isOnboarded", "true"); // 👈 යූසර් onboarding ඉවර කරා කියලා මතක තියාගන්න flag එකක්
+
+        alert("Saved Successfully! 🎉");
         window.location.reload();
+ 
 
       }} className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
         Finish
