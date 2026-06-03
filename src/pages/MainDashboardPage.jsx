@@ -1,7 +1,13 @@
+import BudgetShow from "../components/budgetShow";
+
+
 function MainDashboardPage() {
   return (
     <div>
-      <h1>Main Dashboard Page</h1>
+    
+      <BudgetShow />
+      <h1>hello budget dashboard</h1>
+
     </div>
   );
 } export default MainDashboardPage;
