@@ -114,7 +114,13 @@ function BudgetReview({
 
       
 
-      <button className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
+      <button onClick={() => {
+        localStorage.setItem("userIncome", income)
+        localStorage.setItem("userBudget", budget)
+        alert("saved!")
+        window.location.reload();
+
+      }} className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
         Finish
       </button>
 

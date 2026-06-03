@@ -1,4 +1,4 @@
-function BudgetShow(saving, totalAllocated, unAllocatedBudget, income) {
+function BudgetShow(saving, totalAllocated, unAllocatedBudget, income, budget) {
 
   return(
 
