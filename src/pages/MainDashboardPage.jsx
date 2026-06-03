@@ -6,6 +6,9 @@ function MainDashboardPage() {
     <div>
     
       <BudgetShow />
+      <div>
+        <BudgetShow />
+      </div>
       <h1>hello budget dashboard</h1>
 
     </div>
