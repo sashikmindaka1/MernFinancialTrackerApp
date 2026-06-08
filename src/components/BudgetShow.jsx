@@ -50,15 +50,15 @@ function BudgetShow({
       {/* 💳 TOP METRIC CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-xl backdrop-blur-md">
-          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">💰 Total Income</p>
+          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1"> Total Income</p>
           <h2 className="text-2xl font-black text-white">Rs. {income.toLocaleString()}</h2>
         </div>
         <div className="p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-xl backdrop-blur-md">
-          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">💳 Remaining Budget</p>
+          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1"> Remaining Budget</p>
           <h2 className="text-2xl font-black text-[#00f2fe]">Rs. {budget.toLocaleString()}</h2>
         </div>
         <div className="p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-xl backdrop-blur-md">
-          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">📉 Expected Savings</p>
+          <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1"> Expected Savings</p>
           <h2 className="text-2xl font-black text-emerald-400">Rs. {saving.toLocaleString()}</h2>
         </div>
       </div>
