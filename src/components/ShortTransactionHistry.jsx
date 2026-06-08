@@ -1,4 +1,6 @@
-function ShortTransactionHistry({}) {
+function ShortTransactionHistry({transactions = []}) {
+
+  const latestTransactions = transactions.slice(-4).reverse();
 
  
 
