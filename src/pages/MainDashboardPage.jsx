@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BudgetShow from "../components/BudgetShow"; 
 import GetExpenses from "../components/GetExpenses"; 
+import ShortTransactionHistry from "../components/ShortTransactionHistry"
 
 function MainDashboardPage() {
   // --- FINANCIAL STATES ---
@@ -78,7 +79,13 @@ function MainDashboardPage() {
             />
           </div>
 
+          
+
         </div>
+        <div>
+            <ShortTransactionHistry 
+            />
+          </div>
 
       </div>
     </div>
