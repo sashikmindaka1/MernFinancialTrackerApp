@@ -29,6 +29,10 @@ function MainDashboardPage() {
     const savedEntertainment = localStorage.getItem("entertainmentBudget");
     const savedHealth = localStorage.getItem("healthBudget");
     const savedOther = localStorage.getItem("otherBudget");
+    const savedTransactions = localStorage.getItem("userTransactions");
+    if(savedTransactions){
+      setTransactions(JSON.parse(savedTransactions));
+    }
 
     if (savedIncome) setIncome(Number(savedIncome));
     if (savedBudget) {
@@ -44,6 +48,19 @@ function MainDashboardPage() {
   }, []);
 
   const saving = income - budget;
+
+  // short transactions history 
+  const [transactions, setTransactions] = useState([]);
+  const newTx = {amout: 1500, expenseCategory: "foodBudget"};
+  const updatedTransaction = [...transactions, newTx];
+
+  setTransactions(updatedTransaction);
+
+  // save in localstorage
+  localStorage.setItem("userTransactions",JSON.stringify(updatedTransaction));
+
+
+
 
   return (
     <div className="pt-40 p-4 md:p-8 bg-[#0f1115] min-h-screen text-white w-full">
@@ -78,8 +95,6 @@ function MainDashboardPage() {
               initialTotalBudget={initialTotalBudget} // 💡 Sent to calculate progress bars
             />
           </div>
-
-          
 
         </div>
         <div>

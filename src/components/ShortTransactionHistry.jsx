@@ -1,14 +1,10 @@
-function ShortTransactionHistry({amount, expenseCategory}) {
+function ShortTransactionHistry({}) {
 
-  const hstryAmount = {amount};
-  const histryExpenses = {expenseCategory}
+ 
 
   return(
     <div>
-      <h1>
-        <histryExpenses></histryExpenses>
-      </h1>
-
+    
     
 
     </div>
