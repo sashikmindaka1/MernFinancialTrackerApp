@@ -18,8 +18,11 @@ function MainDashboardPage() {
 
   // Track the initial allocated total budget to calculate progress percentages
   const [initialTotalBudget, setInitialTotalBudget] = useState(0);
+  
+  // Array state to hold the log of tracked expenses
+  const [transactions, setTransactions] = useState([]); 
 
-  // --- LOAD DATA FROM LOCALSTORAGE ---
+  // --- INITIALIZATION LIFECYCLE: LOAD DATA FROM LOCALSTORAGE ---
   useEffect(() => {
     const savedIncome = localStorage.getItem("userIncome");
     const savedBudget = localStorage.getItem("userBudget");
@@ -30,14 +33,17 @@ function MainDashboardPage() {
     const savedHealth = localStorage.getItem("healthBudget");
     const savedOther = localStorage.getItem("otherBudget");
     const savedTransactions = localStorage.getItem("userTransactions");
-    if(savedTransactions){
+    
+    // Parse and set the transaction history if records exist
+    if (savedTransactions) {
       setTransactions(JSON.parse(savedTransactions));
     }
 
+    // Convert string data back to numbers and assign to states
     if (savedIncome) setIncome(Number(savedIncome));
     if (savedBudget) {
       setBudget(Number(savedBudget));
-      setInitialTotalBudget(Number(savedBudget)); // Set the base allocation
+      setInitialTotalBudget(Number(savedBudget)); // Lock down baseline budget allocation
     }
     if (savedFood) setFoodBudget(Number(savedFood));
     if (savedTransport) setTransportBudget(Number(savedTransport));
@@ -45,31 +51,34 @@ function MainDashboardPage() {
     if (savedEntertainment) setEntertainmentBudget(Number(savedEntertainment));
     if (savedHealth) setHealthBudget(Number(savedHealth));
     if (savedOther) setOtherBudget(Number(savedOther));
-  }, []);
+  }, []); // Run once on component mounting to prevent rendering loops
 
+  // Calculate remaining unallocated liquid cash
   const saving = income - budget;
 
-  // short transactions history 
-  const [transactions, setTransactions] = useState([]);
-  const newTx = {amout: 1500, expenseCategory: "foodBudget"};
-  const updatedTransaction = [...transactions, newTx];
-
-  setTransactions(updatedTransaction);
-
-  // save in localstorage
-  localStorage.setItem("userTransactions",JSON.stringify(updatedTransaction));
-
-
-
+  // --- BUSINESS LOGIC HANDLERS ---
+  // Callback execution triggered upon form submission inside GetExpenses component
+  const handleAddTransaction = (category, amount) => {
+    const newTx = { amount: Number(amount), expenseCategory: category };
+    
+    // Append new transaction record into state utilizing the array spread operator
+    const updatedTransactions = [...transactions, newTx];
+    setTransactions(updatedTransactions);
+    
+    // Persist updated list structure to LocalStorage
+    localStorage.setItem("userTransactions", JSON.stringify(updatedTransactions));
+  };
 
   return (
     <div className="pt-40 p-4 md:p-8 bg-[#0f1115] min-h-screen text-white w-full">
       <div className="w-full px-4 md:px-12 mt-8">
         
+        {/* Responsive Layout Grid Definition */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start w-full">
           
-          {/* ⬅️ LEFT COLUMN: EXPENSE TRANSACTION FORM */}
-          <div className="lg:col-span-1 order-2 lg:order-1 lg:pt-16 flex justify-start w-full">
+          {/* ⬅ LEFT COLUMN: EXPENSE TRANSACTION FORM & RECENT HISTORY VIEW */}
+          {/* Note: changed to flex-col to cleanly separate form block from history container vertically */}
+          <div className="lg:col-span-1 order-2 lg:order-1 lg:pt-16 flex flex-col gap-6 w-full">
             <GetExpenses 
               foodBudget={foodBudget} setFoodBudget={setFoodBudget}
               transportBudget={transportBudget} setTransportBudget={setTransportBudget}
@@ -77,10 +86,13 @@ function MainDashboardPage() {
               entertainmentBudget={entertainmentBudget} setEntertainmentBudget={setEntertainmentBudget}
               healthBudget={healthBudget} setHealthBudget={setHealthBudget}
               otherBudget={otherBudget} setOtherBudget={setOtherBudget}
+              onAddTransaction={handleAddTransaction} // Passes functional hook reference down as prop
             />
+
+            <ShortTransactionHistry transactions={transactions} />
           </div>
 
-          {/* ➡️ RIGHT COLUMN: REAL-TIME FINANCIAL CARDS */}
+          {/*  RIGHT COLUMN: REAL-TIME FINANCIAL MONITORING CARDS */}
           <div className="lg:col-span-2 order-1 lg:order-2">
             <BudgetShow
               income={income}
@@ -92,12 +104,11 @@ function MainDashboardPage() {
               entertainmentBudget={entertainmentBudget}
               healthBudget={healthBudget}
               otherBudget={otherBudget} 
-              initialTotalBudget={initialTotalBudget} // 💡 Sent to calculate progress bars
+              initialTotalBudget={initialTotalBudget} // Bound dependency parameters used for chart tracking hooks
             />
           </div>
 
         </div>
-        
       </div>
     </div>
   );
