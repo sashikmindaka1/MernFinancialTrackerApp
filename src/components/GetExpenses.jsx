@@ -7,7 +7,8 @@ function GetExpenses({
   billsBudget, setBillsBudget,
   entertainmentBudget, setEntertainmentBudget,
   healthBudget, setHealthBudget,
-  otherBudget, setOtherBudget
+  otherBudget, setOtherBudget,
+  onAddTransaction
 }) {
 
   // Local states for form inputs
@@ -51,6 +52,11 @@ function GetExpenses({
       localStorage.setItem("otherBudget", updated);
     }
 
+
+    if (onAddTransaction) {
+      onAddTransaction(expenseCategory, expenseNum);
+    }
+    
     //  STEP 4: Clear input field after success
     setAmount("");
     alert("Expense added successfully! 🚀");
