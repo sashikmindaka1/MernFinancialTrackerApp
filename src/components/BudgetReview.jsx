@@ -124,7 +124,7 @@ function BudgetReview({
         localStorage.setItem("healthBudget", numHealth);
         localStorage.setItem("otherBudget", numOther);
   
-        localStorage.setItem("isOnboarded", "true"); // 👈 යූසර් onboarding ඉවර කරා කියලා මතක තියාගන්න flag එකක්
+        localStorage.setItem("isOnboarded", "true"); 
 
         alert("Saved Successfully! 🎉");
         window.location.reload();
