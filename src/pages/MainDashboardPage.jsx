@@ -76,7 +76,7 @@ function MainDashboardPage() {
         {/* Responsive Layout Grid Definition */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start w-full">
           
-          {/* ⬅ LEFT COLUMN: EXPENSE TRANSACTION FORM & RECENT HISTORY VIEW */}
+          {/*  LEFT COLUMN: EXPENSE TRANSACTION FORM & RECENT HISTORY VIEW */}
           {/* Note: changed to flex-col to cleanly separate form block from history container vertically */}
           <div className="lg:col-span-1 order-2 lg:order-1 lg:pt-16 flex flex-col gap-6 w-full">
             <GetExpenses 
