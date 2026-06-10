@@ -1,7 +1,20 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 function SpecialGoal() {
+
+  const [goalName, setGoalName] = useState("");
+  const [goalValue, setGoalValue] = useState("");
+
+
+
+
+
+
+
+
+
   return (
     <div className="min-h-screen bg-[#0f111a] text-white flex flex-col justify-between">
 
@@ -73,9 +86,12 @@ function SpecialGoal() {
                     Add your future goal
                   </label>
                   <input 
-                    type="text" 
-                    placeholder="Name of your dream (e.g. New Laptop)"
-                    className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
+
+                  value = {goalName}
+                  onChange={(e) => setGoalName(e.target.value)}
+                  type="text" 
+                  placeholder="Name of your dream (e.g. New Laptop)"
+                  className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
                   />
                 </div>
 
@@ -85,14 +101,28 @@ function SpecialGoal() {
                     Target Amount
                   </label>
                   <input 
-                    type="text" 
-                    placeholder="Rs. 12,000"
-                    className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
+
+                  value={goalValue}
+                  onChange={(e) =>setGoalValue(e.target.value)}
+                  type="text" 
+                  placeholder="Rs. 12,000"
+                  className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
                   />
                 </div>
 
                 {/* Primary Action Button */}
                 <button 
+
+                onClick={() => {
+
+                  const SpecialGoalName = localStorage.setItem("SpecialGoalName", goalName)
+                  const SpecialGoalValue = localStorage.setItem("SpecialGoalValue", goalValue)
+                  alert('value addded');
+                  window.location.reload();
+                  
+                }}
+
+
                   type="submit"
                   className="w-full bg-gradient-to-r from-[#00c6ff] to-[#0072ff] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.98] transition-all uppercase tracking-wider text-xs"
                 >
@@ -108,10 +138,11 @@ function SpecialGoal() {
                 <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
                   Want to change your salary?
                 </h3>
-                <button onClick={() =>{
+                <button
+                 onClick={() =>{
 
                   window.location.href = '/OnboardingSetupPage'
-
+        
                 }}
 
                 
