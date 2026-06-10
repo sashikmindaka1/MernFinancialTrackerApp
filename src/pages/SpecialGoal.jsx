@@ -108,7 +108,13 @@ function SpecialGoal() {
                 <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
                   Want to change your salary?
                 </h3>
-                <button 
+                <button onClick={() =>{
+
+                  window.location.href = '/OnboardingSetupPage'
+
+                }}
+
+                
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >
