@@ -70,6 +70,7 @@ function MainDashboardPage() {
   };
 
   return (
+    
     <div className="pt-40 p-4 md:p-8 bg-[#0f1115] min-h-screen text-white w-full">
       <div className="w-full px-4 md:px-12 mt-8">
         
