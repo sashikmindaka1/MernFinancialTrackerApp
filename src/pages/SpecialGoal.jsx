@@ -1,68 +1,87 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Premium navigation without page reloads
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useState } from "react";
 
 function SpecialGoal() {
-
+  const navigate = useNavigate();
   const [goalName, setGoalName] = useState("");
   const [goalValue, setGoalValue] = useState("");
 
+  // --- LIFECYCLE: LOAD EXISTING GOAL DATA ON MOUNT ---
+  useEffect(() => {
+    const savedGoalName = localStorage.getItem("SpecialGoalName");
+    // 💡 Matching the exact key used in MainDashboard & GetExpenses
+    const savedGoalValue = localStorage.getItem("SpecialGoalShowValue"); 
 
+    if (savedGoalName) setGoalName(savedGoalName);
+    if (savedGoalValue) setGoalValue(savedGoalValue);
+  }, []);
+
+  // --- HANDLER: SAVE GOAL TO LOCALSTORAGE ---
+  const handleSaveGoal = () => {
+    if (!goalName.trim() || !goalValue || Number(goalValue) <= 0) {
+      alert("Please enter a valid goal name and target amount.");
+      return;
+    }
+
+    // Persist data using standardized keys across the app
+    localStorage.setItem("SpecialGoalName", goalName);
+    localStorage.setItem("SpecialGoalShowValue", goalValue); // 🔥 Fixed Key Mismatch
+    
+    alert("Special Goal Target configured successfully! 🚀");
+  };
 
   return (
     <div className="min-h-screen bg-[#0f111a] text-white flex flex-col justify-between">
+      {/* <Navbar /> Inserted if needed */}
 
-
-      {/* --- MAIN CONTENT CONTAINER: HANDLES THE GRID & BACKGROUND EFFECTS --- */}
+      {/* --- MAIN CONTENT CONTAINER --- */}
       <div className="flex-grow flex items-center justify-center px-6 py-16 relative overflow-hidden">
         
-        {/* Ambient Blurred Background Neon Orbs for UI Depth */}
+        {/* Ambient Blurred Background Neon Orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00e5ff]/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#0072ff]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-        {/* Responsive Dual-Column Grid System */}
-        {/* Switches to 1 column on mobile and 2 columns on medium screens and up */}
+        {/* Responsive Dual-Column Grid */}
         <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
           
           {/* ⬅ LEFT COLUMN: MARKETING COPY & CORE VALUE STATEMENT */}
-          {/* Automatically hidden on mobile layout views to clean up screen estate */}
-          <div className=" space-y-6 text-center md:text-left hidden md:block">
-            {/* Context Badge */}
+          <div className="space-y-6 text-center md:text-left hidden md:block">
             <div className="inline-block px-3 py-1 bg-[#00e5ff]/10 border border-[#00e5ff]/30 rounded-full text-xs font-semibold text-[#00e5ff] uppercase tracking-wider">
                Smart Wealth Planning
             </div>
-            {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Visualize Your <br />
               <span className="bg-gradient-to-r from-[#00e5ff] to-[#0072ff] bg-clip-text text-transparent">
                 Financial Dreams
               </span>
             </h1>
-            {/* Description Paragraph */}
             <p className="text-gray-400 text-base max-w-sm leading-relaxed">
               Setting clear targets is the first step to financial freedom. Define your objectives, track your savings progress, and stay motivated.
             </p>
             
-            {/* Quick Metrics Dashboard Preview Showcase */}
+            {/* Quick Metrics Preview Dashboard */}
             <div className="flex gap-8 pt-4 border-t border-[#23283a] max-w-sm">
               <div>
-                <p className="text-2xl font-bold text-[#00e5ff]">0%</p>
+                <p className="text-2xl font-bold text-[#00e5ff]">
+                  {goalValue ? "0%" : "0%"}
+                </p>
                 <p className="text-xs text-gray-500 uppercase">Avg. Progress</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-white">Rs. 0</p>
-                <p className="text-xs text-gray-500 uppercase">Total Locked</p>
+                <p className="text-2xl font-bold text-white">
+                  Rs. {goalValue ? Number(goalValue).toLocaleString() : "0"}
+                </p>
+                <p className="text-xs text-gray-500 uppercase">Target Goal</p>
               </div>
             </div>
           </div>
 
-          {/*  RIGHT COLUMN: INTERACTIVE FORM CONTAINER */}
-          {/* Uses standard Flex centering hooks to correctly map boundaries across responsive changes */}
+          {/* ➡ RIGHT COLUMN: INTERACTIVE FORM CONTAINER */}
           <div className="flex justify-center md:justify-end w-full">
-            {/* Translucent Glassmorphic Card Wrapper */}
             <div className="w-full max-w-md bg-[#161924]/60 border border-[#23283a] rounded-2xl p-8 shadow-2xl backdrop-blur-xl">
               
-              {/* Form Heading & Subtext */}
               <div className="text-center mb-8">
                 <h2 className="text-xl font-bold text-[#00e5ff] tracking-wide uppercase">
                   Set Future Goals
@@ -72,7 +91,7 @@ function SpecialGoal() {
                 </p>
               </div>
 
-              {/* Input Form Fields Wrapper */}
+              {/* Form Input Fields */}
               <div className="space-y-5">
                 {/* Goal Identification Name Field */}
                 <div>
@@ -80,44 +99,35 @@ function SpecialGoal() {
                     Add your future goal
                   </label>
                   <input 
-
-                  value = {goalName}
-                  onChange={(e) => setGoalName(e.target.value)}
-                  type="text" 
-                  placeholder="Name of your dream (e.g. New Laptop)"
-                  className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
+                    value={goalName}
+                    onChange={(e) => setGoalName(e.target.value)}
+                    type="text" 
+                    placeholder="Name of your dream (e.g. New Laptop)"
+                    className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
                   />
                 </div>
 
-                {/* Target Capital Accumulation Amount Input Field */}
+                {/* Target Capital Amount Input Field */}
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
                     Target Amount
                   </label>
-                  <input 
-
-                  value={goalValue}
-                  onChange={(e) =>setGoalValue(e.target.value)}
-                  type="text" 
-                  placeholder="Rs. 12,000"
-                  className="w-full bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#00e5ff] transition-all"
-                  />
+                  <div className="relative flex items-center bg-[#0f111a] border border-[#2d3548] rounded-xl px-4 py-3 focus-within:border-[#00e5ff] transition-all">
+                    <span className="text-gray-500 font-bold text-sm mr-2 pointer-events-none">Rs.</span>
+                    <input 
+                      value={goalValue}
+                      onChange={(e) => setGoalValue(e.target.value)}
+                      type="number" // 💡 Changed to number for strict financial inputs
+                      placeholder="12,000"
+                      className="w-full bg-transparent text-white placeholder-gray-600 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                  </div>
                 </div>
 
-                {/* Primary Action Button */}
+                {/* Primary Save Action Button */}
                 <button 
-
-                onClick={() => {
-
-                  const SpecialGoalName = localStorage.setItem("SpecialGoalName", goalName)
-                  const SpecialGoalValue = localStorage.setItem("SpecialGoalValue", goalValue)
-                  alert('value addded');
-                  window.location.reload();
-                  
-                }}
-
-
-                  type="submit"
+                  onClick={handleSaveGoal}
+                  type="button"
                   className="w-full bg-gradient-to-r from-[#00c6ff] to-[#0072ff] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg hover:opacity-95 active:scale-[0.98] transition-all uppercase tracking-wider text-xs"
                 >
                   Start Investing
@@ -127,19 +137,13 @@ function SpecialGoal() {
               {/* Visual Divider Separator */}
               <div className="border-t border-[#23283a] my-6"></div>
 
-              {/* Secondary Option: Salary Readjustment Navigation Trigger */}
+              {/* Secondary Navigation Option */}
               <div className="text-center">
                 <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
-                  Want to change your salary?
+                  Ready to check your Dashboard?
                 </h3>
                 <button
-                 onClick={() =>{
-
-                  window.location.href = '/OnboardingSetupPage'
-        
-                }}
-
-                
+                  onClick={() => navigate("/OnboardingSetupPage")} // 💡 SPA routing logic
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >
@@ -153,7 +157,7 @@ function SpecialGoal() {
         </div>
       </div>
 
-
+      {/* <Footer /> Inserted if needed */}
     </div>
   );
 }
