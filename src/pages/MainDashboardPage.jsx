@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import BudgetShow from "../components/BudgetShow"; 
 import GetExpenses from "../components/GetExpenses"; 
 import ShortTransactionHistry from "../components/ShortTransactionHistry";
+import DashboardSpecialGoal from "../components/DashboardSpecialGoal";  
 
 function MainDashboardPage() {
   // --- FINANCIAL STATES ---
@@ -36,8 +37,9 @@ function MainDashboardPage() {
     const savedHealth = localStorage.getItem("healthBudget");
     const savedOther = localStorage.getItem("otherBudget");
     const savedTransactions = localStorage.getItem("userTransactions");
-    // Retrieve the special goal value from localStorage
-    const savedSpecialGoal = localStorage.getItem("SpecialGoalShowValue");
+    
+    // 💡 Read the correct accumulated savings from localStorage for the goal box
+    const savedSpecialGoal = localStorage.getItem("SpecialGoalValue");
 
     // Parse and load transaction history if records exist
     if (savedTransactions) {
@@ -78,14 +80,15 @@ function MainDashboardPage() {
   };
 
   return (
-    <div className="pt-40 p-4 md:p-8 bg-[#0f1115] min-h-screen text-white w-full">
-      <div className="w-full px-4 md:px-12 mt-8">
+    // Premium dark theme container wrapper
+    <div className="pt-32 p-4 md:p-8 bg-[#0f1115] min-h-screen text-white w-full font-sans antialiased selection:bg-[#00f2fe]/30 selection:text-white">
+      <div className="w-full max-w-[1600px] mx-auto px-2 md:px-6 mt-4">
         
-        {/* Responsive Grid Layout */}
+        {/* Responsive Grid Layout Definition */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start w-full">
           
-          {/* LEFT COLUMN: EXPENSE SUBMISSION FORM & TRANSACTION HISTORY */}
-          <div className="lg:col-span-1 order-2 lg:order-1 lg:pt-16 flex flex-col gap-6 w-full">
+          {/* ⬅️ LEFT COLUMN: EXPENSE SUBMISSION FORM & TRANSACTION HISTORY */}
+          <div className="lg:col-span-1 order-2 lg:order-1 flex flex-col gap-8 w-full">
             <GetExpenses 
               foodBudget={foodBudget} setFoodBudget={setFoodBudget}
               transportBudget={transportBudget} setTransportBudget={setTransportBudget}
@@ -93,7 +96,6 @@ function MainDashboardPage() {
               entertainmentBudget={entertainmentBudget} setEntertainmentBudget={setEntertainmentBudget}
               healthBudget={healthBudget} setHealthBudget={setHealthBudget}
               otherBudget={otherBudget} setOtherBudget={setOtherBudget}
-              // Pass down special goal state variables as reactive props
               goalValue={specialGoalValue} setGoalValue={setSpecialGoalValue}
               onAddTransaction={handleAddTransaction}
             />
@@ -101,8 +103,9 @@ function MainDashboardPage() {
             <ShortTransactionHistry transactions={transactions} />
           </div>
 
-          {/* RIGHT COLUMN: REAL-TIME OVERVIEW & VISUALIZATION METRICS */}
-          <div className="lg:col-span-2 order-1 lg:order-2">
+          {/* ➡️ RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
+          {/* 💡 Box spacing and card structuring fixed here cleanly using flex-col gap-8 */}
+          <div className="lg:col-span-2 order-1 lg:order-2 flex flex-col gap-8 w-full">
             <BudgetShow
               income={income}
               budget={budget}
@@ -115,6 +118,9 @@ function MainDashboardPage() {
               otherBudget={otherBudget} 
               initialTotalBudget={initialTotalBudget}
             />
+            
+            {/* 🎯 Special Goal box sits perfectly parallel to the input form below the charts */}
+            <DashboardSpecialGoal accumulatedFromState={specialGoalValue} />
           </div>
 
         </div>

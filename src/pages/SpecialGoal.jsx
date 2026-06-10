@@ -7,15 +7,20 @@ function SpecialGoal() {
   const navigate = useNavigate();
   const [goalName, setGoalName] = useState("");
   const [goalValue, setGoalValue] = useState("");
+  
+  // 💡 1. Real-time preview එක පෙන්වන්න වෙනම ස්ටේට් එකක් ගන්නවා
+  const [previewTarget, setPreviewTarget] = useState(0);
 
   // --- LIFECYCLE: LOAD EXISTING GOAL DATA ON MOUNT ---
   useEffect(() => {
     const savedGoalName = localStorage.getItem("SpecialGoalName");
-    // 💡 Matching the exact key used in MainDashboard & GetExpenses
     const savedGoalValue = localStorage.getItem("SpecialGoalShowValue"); 
 
     if (savedGoalName) setGoalName(savedGoalName);
-    if (savedGoalValue) setGoalValue(savedGoalValue);
+    if (savedGoalValue) {
+      setGoalValue(savedGoalValue);
+      setPreviewTarget(Number(savedGoalValue)); // 💡 මුලින්ම ලෝඩ් වෙද්දී ප්‍රිවීව් එකටත් සෙට් කරනවා
+    }
   }, []);
 
   // --- HANDLER: SAVE GOAL TO LOCALSTORAGE ---
@@ -27,14 +32,21 @@ function SpecialGoal() {
 
     // Persist data using standardized keys across the app
     localStorage.setItem("SpecialGoalName", goalName);
-    localStorage.setItem("SpecialGoalShowValue", goalValue); // 🔥 Fixed Key Mismatch
+    localStorage.setItem("SpecialGoalShowValue", goalValue); 
+    
+    // 💡 2. පේජ් එක රීලෝඩ් කරන්නේ නැතුව වමේ තියෙන ප්‍රිවීව් වැලියු එක එවලේම අප්ඩේට් කරනවා
+    setPreviewTarget(Number(goalValue));
     
     alert("Special Goal Target configured successfully! 🚀");
+    
+    // 💡 3. ඕන නම් සේව් වුණාට පස්සේ ඉන්පුට් ෆීල්ඩ්ස් ටික මෙතනින් හිස් කරන්න පුළුවන්:
+    // setGoalName("");
+    // setGoalValue("");
   };
 
   return (
     <div className="min-h-screen bg-[#0f111a] text-white flex flex-col justify-between">
-      {/* <Navbar /> Inserted if needed */}
+      {/* <Navbar /> */}
 
       {/* --- MAIN CONTENT CONTAINER --- */}
       <div className="flex-grow flex items-center justify-center px-6 py-16 relative overflow-hidden">
@@ -65,13 +77,14 @@ function SpecialGoal() {
             <div className="flex gap-8 pt-4 border-t border-[#23283a] max-w-sm">
               <div>
                 <p className="text-2xl font-bold text-[#00e5ff]">
-                  {goalValue ? "0%" : "0%"}
+                  0%
                 </p>
                 <p className="text-xs text-gray-500 uppercase">Avg. Progress</p>
               </div>
               <div>
+                {/* 💡 4. දැන් මේ ලේබල් එක රීලෝඩ් නොවී ක්ෂණිකව අප්ඩේට් වෙනවා */}
                 <p className="text-2xl font-bold text-white">
-                  Rs. {goalValue ? Number(goalValue).toLocaleString() : "0"}
+                  Rs. {previewTarget ? previewTarget.toLocaleString() : "0"}
                 </p>
                 <p className="text-xs text-gray-500 uppercase">Target Goal</p>
               </div>
@@ -117,7 +130,7 @@ function SpecialGoal() {
                     <input 
                       value={goalValue}
                       onChange={(e) => setGoalValue(e.target.value)}
-                      type="number" // 💡 Changed to number for strict financial inputs
+                      type="number" 
                       placeholder="12,000"
                       className="w-full bg-transparent text-white placeholder-gray-600 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
@@ -143,7 +156,7 @@ function SpecialGoal() {
                   Ready to check your Dashboard?
                 </h3>
                 <button
-                  onClick={() => navigate("/OnboardingSetupPage")} // 💡 SPA routing logic
+                  onClick={() => navigate("/OnboardingSetupPage")} // 💡 Dashboard එකේ path එකට නිවැරදිව මාරු කරන්න
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >
@@ -157,7 +170,7 @@ function SpecialGoal() {
         </div>
       </div>
 
-      {/* <Footer /> Inserted if needed */}
+      {/* <Footer /> */}
     </div>
   );
 }
