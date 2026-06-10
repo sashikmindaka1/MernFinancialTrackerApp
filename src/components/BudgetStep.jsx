@@ -74,7 +74,7 @@ function BudgetStep({
         <div className="h-6 text-center mb-6">
           {isOverIncome && (
             <p className="text-xs text-red-400 font-medium tracking-wide">
-              ⚠️ Warning: Your total budget cannot exceed your monthly income (Rs. {numIncome.toLocaleString()})
+               Warning: Your total budget cannot exceed your monthly income (Rs. {numIncome.toLocaleString()})
             </p>
           )}
         </div>

@@ -13,7 +13,7 @@ function BudgetShow({
   initialTotalBudget
 }) {
   
-  // 🧮 HELPER FUNCTION: Calculates progress percentage and dynamic color classes
+  //  HELPER FUNCTION: Calculates progress percentage and dynamic color classes
   const getProgressDetails = (currentRemaining) => {
     // Assuming equal allocation across 6 main categories for baseline tracking
     const initialAllocation = initialTotalBudget / 6; 
@@ -24,7 +24,7 @@ function BudgetShow({
     // Cap the max percentage at 100% to keep UI layout fully stable
     let percent = Math.min(Math.max((totalSpent / initialAllocation) * 100, 0), 100);
 
-    // 🎨 DYNAMIC PREMIUM COLORS BASED ON SPENDING THRESHOLDS
+    //  DYNAMIC PREMIUM COLORS BASED ON SPENDING THRESHOLDS
     let colorClass = "bg-[#00f2fe]"; // Neon Cyan/Green for Safe (< 50%)
     if (percent >= 50 && percent < 80) {
       colorClass = "bg-amber-500"; // Solid Warning Orange (50% - 80%)
@@ -37,12 +37,12 @@ function BudgetShow({
 
   // Extract real-time calculations for each specific category
   const categories = [
-    { name: "🍔 Food", current: foodBudget },
-    { name: "🚗 Transport", current: transportBudget },
-    { name: "💡 Bills", current: billsBudget },
-    { name: "🎬 Entertainment", current: entertainmentBudget },
-    { name: "🏥 Health", current: healthBudget },
-    { name: "📦 Other", current: otherBudget },
+    { name: " Food", current: foodBudget },
+    { name: " Transport", current: transportBudget },
+    { name: " Bills", current: billsBudget },
+    { name: " Entertainment", current: entertainmentBudget },
+    { name: " Health", current: healthBudget },
+    { name: " Other", current: otherBudget },
   ];
 
   return (
@@ -63,7 +63,7 @@ function BudgetShow({
         </div>
       </div>
 
-      {/* 📊 BUDGET CATEGORIES GRID */}
+      {/*  BUDGET CATEGORIES GRID */}
       <div className="p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-2xl backdrop-blur-md lg:pt-28">
         <h1 className="text-xs font-bold mb-6 text-gray-400 uppercase tracking-widest ">
           Your Allocated Budgets & Usage Tracker
@@ -82,7 +82,7 @@ function BudgetShow({
                   </span>
                 </div>
 
-                {/* 📊 PREMIUM PROGRESS BAR WRAPPER */}
+                {/*  PREMIUM PROGRESS BAR WRAPPER */}
                 <div className="w-full bg-[#111318] h-2 rounded-full overflow-hidden relative">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ease-out ${colorClass}`}

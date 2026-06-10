@@ -1,6 +1,32 @@
 import { Link } from 'react-router-dom';
 import '../index.css';
+import { useEffect, useState } from 'react';
+import SpecialGoal from '../pages/SpecialGoal'; 
+import OnboardingSetupPage from '../pages/OnboardingSetupPage'; 
+
+
 function Navbar() {
+
+  const [isOnboarded, setIsOnboarded] = useState("false")
+
+  useEffect (() => {
+    const localResult = localStorage.getItem("isOnboarded")
+    setIsOnboarded(localResult);
+  })
+
+  const renderButton = isOnboarded === "true" 
+  ? <Link to="/SpecialGoalsPage">Special Goal</Link> 
+  : <Link to="/OnboardingSetupPage">Onboarding Setup</Link>;
+
+
+  
+
+
+
+
+
+
+
   return (
     // bg-white/10 සහ backdrop-blur-md එකෙන් Glassmorphism එක ලස්සනට එනවා
     <nav className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-10 py-2 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg">
@@ -16,7 +42,7 @@ function Navbar() {
       <ul className="flex justify-center gap-10 list-none m-0 p-0">
         <li>
           <Link to="/OnboardingSetupPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
-            Onboarding Setup
+           {renderButton}
           </Link>
         </li>
         <li>

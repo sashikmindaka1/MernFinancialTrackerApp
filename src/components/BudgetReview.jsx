@@ -2,6 +2,7 @@ import React from "react";
 import CardHeader from '@mui/material/CardHeader'
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
+import SpecialGoal from "../pages/SpecialGoal";
 
 function BudgetReview({
   income, 
@@ -29,6 +30,14 @@ function BudgetReview({
   const saving = numIncome - numBudget;
   const totalAllocated = numFood + numTransport + numBills + numEntertainment + numHealth + numOther;
   const unAllocatedBudget = numBudget - totalAllocated;
+
+
+  function handleFinishSetup(){
+    <SpecialGoal />
+  }
+
+
+
 
   return (
     // Main Container Box
@@ -126,8 +135,10 @@ function BudgetReview({
   
         localStorage.setItem("isOnboarded", "true"); 
 
-        alert("Saved Successfully! 🎉");
+        alert("Saved Successfully! ");
         window.location.reload();
+
+        onClick={handleFinishSetup}
  
 
       }} className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
