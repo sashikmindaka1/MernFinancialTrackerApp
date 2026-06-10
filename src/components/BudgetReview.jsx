@@ -136,7 +136,7 @@ function BudgetReview({
         localStorage.setItem("isOnboarded", "true"); 
 
         alert("Saved Successfully! ");
-        window.location.reload();
+        window.location.href = "/SpecialGoalsPage";
 
         onClick={handleFinishSetup}
  

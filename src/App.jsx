@@ -8,6 +8,7 @@ import MainDashboardPage from './pages/MainDashboardPage';
 import AnalyticsInsightsPage from './pages/AnalyticsInsightsPage';
 import Homepage from './pages/Homepage';
 import TransactionsHistoryPage from './pages/TransactionsHistoryPage';  
+import SpecialGoal from './pages/SpecialGoal';  
 
 
 
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
       {
         path: "/TransactionsHistoryPage",
         element: <TransactionsHistoryPage />
+      },
+
+      {
+        path: "/SpecialGoalsPage",
+        element: <SpecialGoal />
       }
 
     ]

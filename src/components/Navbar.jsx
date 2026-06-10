@@ -14,9 +14,7 @@ function Navbar() {
     setIsOnboarded(localResult);
   })
 
-  const renderButton = isOnboarded === "true" 
-  ? <Link to="/SpecialGoalsPage">Special Goal</Link> 
-  : <Link to="/OnboardingSetupPage">Onboarding Setup</Link>;
+  const renderButton = isOnboarded === "true" ? <Link to="/SpecialGoalsPage">Special Goal</Link> : <Link to="/OnboardingSetupPage">Onboarding Setup</Link>;
 
 
   
