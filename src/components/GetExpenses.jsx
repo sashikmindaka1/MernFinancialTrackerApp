@@ -8,7 +8,9 @@ function GetExpenses({
   entertainmentBudget, setEntertainmentBudget,
   healthBudget, setHealthBudget,
   otherBudget, setOtherBudget,
-  onAddTransaction
+  onAddTransaction,
+  goalName, setGoalName,
+  goalValue, setGoalValue,
 }) {
 
   // Local states for form inputs
@@ -19,7 +21,7 @@ function GetExpenses({
   const handleExpenseSubmit = () => {
     // Validation
     if (!amount || Number(amount) <= 0) {
-      alert("Please enter a valid amount, ");
+      alert("Please enter a valid amount.");
       return;
     }
 
@@ -50,8 +52,12 @@ function GetExpenses({
       const updated = otherBudget - expenseNum;
       setOtherBudget(updated);
       localStorage.setItem("otherBudget", updated);
-    }
+    } else if (expenseCategory === "SpecialGoalShowValue") {
+      const updated = Number(goalValue || 0) + expenseNum; 
+      setGoalValue(updated);
 
+      localStorage.setItem("SpecialGoalShowValue", updated);
+    }
 
     if (onAddTransaction) {
       onAddTransaction(expenseCategory, expenseNum);
@@ -59,14 +65,13 @@ function GetExpenses({
     
     //  STEP 4: Clear input field after success
     setAmount("");
-    alert("Expense added successfully! 🚀");
+    alert("Expense added successfully! ");
   };
 
   return (
-
-<div className="w-full p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-2xl backdrop-blur-md">
+    <div className="w-full p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-2xl backdrop-blur-md">
       <h3 className="text-base font-bold mb-5 text-[#00f2fe] uppercase tracking-wider text-center">
-         Record New Expense
+          Record New Expense
       </h3>
       
       <div className="flex flex-col gap-5">
@@ -90,12 +95,13 @@ function GetExpenses({
             onChange={(e) => setExpenseCategory(e.target.value)}
             className="w-full bg-[#1f242f] border border-[#232836] p-3 rounded-xl text-white focus:outline-none focus:border-[#00f2fe] transition cursor-pointer"
           >
-            <option value="foodBudget"> Food</option>
-            <option value="transportBudget"> Transport</option>
-            <option value="billsBudget"> Bills</option>
-            <option value="entertainmentBudget"> Entertainment</option>
-            <option value="healthBudget"> Health</option>
-            <option value="otherBudget"> Other</option>
+            <option value="foodBudget">Food</option>
+            <option value="transportBudget">Transport</option>
+            <option value="billsBudget">Bills</option>
+            <option value="entertainmentBudget">Entertainment</option>
+            <option value="healthBudget">Health</option>
+            <option value="otherBudget">Other</option>
+            <option value="SpecialGoalShowValue">Special Goal</option>
           </select>
         </div>
 

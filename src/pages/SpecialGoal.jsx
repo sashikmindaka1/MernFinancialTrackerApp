@@ -9,12 +9,6 @@ function SpecialGoal() {
 
 
 
-
-
-
-
-
-
   return (
     <div className="min-h-screen bg-[#0f111a] text-white flex flex-col justify-between">
 

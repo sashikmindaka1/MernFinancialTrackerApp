@@ -7,7 +7,8 @@ function BudgetStep({
   billsBudget, setBillsBudget, 
   entertainmentBudget, setEntertainmentBudget, 
   healthBudget, setHealthBudget, 
-  otherBudget, setOtherBudget 
+  otherBudget, setOtherBudget,
+ 
 }) {
 
   // Convert inputs safely to numbers to calculate allocations
@@ -140,7 +141,7 @@ function BudgetStep({
         <div className="h-6 text-center mb-4">
           {isOverBudget && (
             <p className="text-xs text-red-400 font-medium tracking-wide">
-              ⚠️ Warning: Category allocations exceed your Total Budget by Rs. {(totalAllocated - numBudget).toLocaleString()}
+               Warning: Category allocations exceed your Total Budget by Rs. {(totalAllocated - numBudget).toLocaleString()}
             </p>
           )}
         </div>

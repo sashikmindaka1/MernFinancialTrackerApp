@@ -14,6 +14,7 @@ function OnboardingSetupPage() {
   const [entertainmentBudget, setEntertainmentBudget] = useState("");
   const [healthBudget, setHealthBudget] = useState("");
   const [otherBudget, setOtherBudget] = useState("");
+  const [specialGoalValue, setSpecialGoalValue] = useState("");
 
   function nextStep() {
     currentStep < 3 && setCurrentStep(currentStep + 1);
@@ -48,6 +49,8 @@ function OnboardingSetupPage() {
             setHealthBudget={setHealthBudget}
             otherBudget={otherBudget}
             setOtherBudget={setOtherBudget}
+            goalValue={specialGoalValue}
+            setGoalValue={setSpecialGoalValue}
           />
         );
       case 3:
@@ -62,6 +65,7 @@ function OnboardingSetupPage() {
             entertainmentBudget={entertainmentBudget}
             healthBudget={healthBudget}
             otherBudget={otherBudget}
+            goalValue={specialGoalValue}
           />
         );
       default:

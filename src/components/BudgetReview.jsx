@@ -12,7 +12,9 @@ function BudgetReview({
   billsBudget, 
   entertainmentBudget, 
   healthBudget, 
-  otherBudget
+  otherBudget,
+  goalValue
+
 }) {
 
   // Fallback to 0 if props are passed as undefined or empty strings to prevent errors
@@ -25,6 +27,7 @@ function BudgetReview({
   const numEntertainment = Number(entertainmentBudget) || 0;
   const numHealth = Number(healthBudget) || 0;
   const numOther = Number(otherBudget) || 0;
+  const numSpecialGoal = Number(goalValue) || 0;
 
   // Financial calculations
   const saving = numIncome - numBudget;
@@ -132,13 +135,12 @@ function BudgetReview({
         localStorage.setItem("entertainmentBudget", numEntertainment);
         localStorage.setItem("healthBudget", numHealth);
         localStorage.setItem("otherBudget", numOther);
+        localStorage.setItem("SpecialGoalShowValue", numSpecialGoal);
   
         localStorage.setItem("isOnboarded", "true"); 
 
         alert("Saved Successfully! ");
         window.location.href = "/SpecialGoalsPage";
-
-        onClick={handleFinishSetup}
  
 
       }} className="w-full py-3 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] hover:from-[#4facfe] hover:to-[#00f2fe] text-black font-bold rounded-xl transition duration-200 shadow-lg uppercase text-sm tracking-wider">
