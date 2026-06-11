@@ -156,7 +156,7 @@ function SpecialGoal() {
                   Ready to check your Dashboard?
                 </h3>
                 <button
-                  onClick={() => navigate("/OnboardingSetupPage")} // 💡 Dashboard එකේ path එකට නිවැරදිව මාරු කරන්න
+                  onClick={() => navigate("/OnboardingSetupPage")} //  Dashboard එකේ path එකට නිවැරදිව මාරු කරන්න
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >

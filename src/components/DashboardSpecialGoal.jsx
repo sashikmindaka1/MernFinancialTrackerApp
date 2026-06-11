@@ -22,7 +22,7 @@ function DashboardSpecialGoal() {
       <div className="flex justify-between items-start mb-6 relative z-10">
         <div>
           <span className="text-[10px] font-bold text-[#00f2fe] uppercase tracking-widest bg-[#00f2fe]/10 px-2.5 py-1 rounded-md border border-[#00f2fe]/20">
-            🎯 Savings Target
+             Savings Target
           </span>
           <h3 className="text-lg font-bold text-white mt-2.5 capitalize tracking-wide">
             {goalName}
@@ -43,7 +43,7 @@ function DashboardSpecialGoal() {
         <div>
           <p className="text-xs text-gray-400 font-medium mb-1">Total Contributed</p>
           <p className="text-lg font-bold text-emerald-400">
-            Rs. {accumulatedAmount.toLocaleString()}
+            Rs. {targetAmount.toLocaleString()}
           </p>
         </div>
         <div className="text-right">
@@ -66,10 +66,14 @@ function DashboardSpecialGoal() {
       {/* Contextual description rendering remaining balance status */}
       <p className="text-[11px] text-gray-500 text-center font-medium italic mt-3">
         {progressPercentage >= 100 
-          ? "🎉 Congratulations! You have fully achieved this goal target!" 
-          : `Keep going! Rs. ${(targetAmount - accumulatedAmount).toLocaleString()} remaining to hit your target.`
+          ? " Congratulations! You have fully achieved this goal target!" 
+          : `Keep going! Rs. ${(accumulatedAmount - targetAmount).toLocaleString()} remaining to hit your target.`
+          
         }
+        
       </p>
+
+      
 
     </div>
   );

@@ -120,7 +120,12 @@ function MainDashboardPage() {
             />
             
             {/* 🎯 Special Goal box sits perfectly parallel to the input form below the charts */}
-            <DashboardSpecialGoal accumulatedFromState={specialGoalValue} />
+            <DashboardSpecialGoal 
+            accumulatedFromState={specialGoalValue} 
+            setGoalValue={setSpecialGoalValue}
+            />
+            
+
           </div>
 
         </div>
