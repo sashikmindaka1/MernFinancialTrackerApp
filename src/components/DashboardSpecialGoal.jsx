@@ -2,7 +2,7 @@ import React from 'react';
 
 function DashboardSpecialGoal() {
   // --- FETCH PERSISTED DATA FROM LOCALSTORAGE ---
-  const targetAmount = Number(localStorage.getItem("SpecialGoalShowValue")) || 0; // Total goal target (e.g. 50,000)
+  const targetAmount = Number(localStorage.getItem("SpecialGoalShowValue")) || 0; // Total goal budget target
   const goalName = localStorage.getItem("SpecialGoalName") || "Special Goal";     // Goal identification label
   const accumulatedAmount = Number(localStorage.getItem("SpecialGoalValue")) || 0; // Current savings contributions
 
@@ -11,6 +11,18 @@ function DashboardSpecialGoal() {
     ? Math.min(Math.round((accumulatedAmount / targetAmount) * 100), 100) 
     : 0;
 
+  // --- HANDLER: REMOVE CURRENT SPECIAL GOAL FROM LOCALSTORAGE ---
+  function RemoveGoal() {
+    localStorage.removeItem("SpecialGoalShowValue");
+    localStorage.removeItem("SpecialGoalValue");
+    localStorage.removeItem("SpecialGoalName");
+    
+    alert("Special Goal Removed Successfully! 🗑️");
+    
+    // Instantly refreshes the current page to clear the UI state
+    window.location.reload();
+  }
+    
   return (
     // Premium translucent box with border glowing effects matching your UI theme
     <div className="w-full p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-2xl backdrop-blur-md relative overflow-hidden group">
@@ -66,14 +78,20 @@ function DashboardSpecialGoal() {
       {/* Contextual description rendering remaining balance status */}
       <p className="text-[11px] text-gray-500 text-center font-medium italic mt-3">
         {progressPercentage >= 100 
-          ? " Congratulations! You have fully achieved this goal target!" 
-          : `Keep going! Rs. ${(accumulatedAmount - targetAmount).toLocaleString()} remaining to hit your target.`
-          
+          ? "🎉 Congratulations! You have fully achieved this goal target!" 
+          : `Keep going! Rs. ${(targetAmount - accumulatedAmount).toLocaleString()} remaining to hit your target.`
         }
-        
       </p>
 
-      
+      {/* Premium Crimson/Red Glow Danger Button for removal */}
+      <button 
+        onClick={RemoveGoal}
+        className="w-full py-3 mt-4 bg-gradient-to-r from-[#830606] to-[#c51e00] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(197,30,0,0.4)] hover:opacity-95 transition-all duration-300 uppercase text-xs tracking-wider border border-[#c51e00]/30 relative z-10"
+      >
+        Remove Goal
+      </button>
+
+      {/* 🔮 REMOVED THE <SpecialGoal /> COMPONENT FROM HERE TO FIX THE LAYOUT BUG */}
 
     </div>
   );

@@ -1,53 +1,60 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Premium navigation without page reloads
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom"; 
 
 function SpecialGoal() {
   const navigate = useNavigate();
   const [goalName, setGoalName] = useState("");
   const [goalValue, setGoalValue] = useState("");
   
-  // 💡 1. Real-time preview එක පෙන්වන්න වෙනම ස්ටේට් එකක් ගන්නවා
+  // Local states to handle live visual updates dynamically
   const [previewTarget, setPreviewTarget] = useState(0);
+  const [liveProgress, setLiveProgress] = useState(0);
 
-  // --- LIFECYCLE: LOAD EXISTING GOAL DATA ON MOUNT ---
+  // --- LIFECYCLE: FETCH ALL PERSISTED DATA ON MOUNT ---
   useEffect(() => {
-    const savedGoalName = localStorage.getItem("SpecialGoalName");
-    const savedGoalValue = localStorage.getItem("SpecialGoalShowValue"); 
+    const savedGoalName = localStorage.getItem("SpecialGoalName") || "";
+    const savedGoalValue = localStorage.getItem("SpecialGoalShowValue") || ""; 
+    const accumulatedAmount = Number(localStorage.getItem("SpecialGoalValue")) || 0;
 
-    if (savedGoalName) setGoalName(savedGoalName);
-    if (savedGoalValue) {
-      setGoalValue(savedGoalValue);
-      setPreviewTarget(Number(savedGoalValue)); // 💡 මුලින්ම ලෝඩ් වෙද්දී ප්‍රිවීව් එකටත් සෙට් කරනවා
+    setGoalName(savedGoalName);
+    setGoalValue(savedGoalValue);
+    
+    const targetNum = Number(savedGoalValue);
+    setPreviewTarget(targetNum);
+
+    // Dynamic math to calculate the progress percentage independently
+    if (targetNum > 0) {
+      const calculatedProgress = Math.min(Math.round((accumulatedAmount / targetNum) * 100), 100);
+      setLiveProgress(calculatedProgress);
+    } else {
+      setLiveProgress(0);
     }
   }, []);
 
-  // --- HANDLER: SAVE GOAL TO LOCALSTORAGE ---
+  // --- HANDLER: CONFIGURING & SAVING THE TARGET ---
   const handleSaveGoal = () => {
     if (!goalName.trim() || !goalValue || Number(goalValue) <= 0) {
       alert("Please enter a valid goal name and target amount.");
       return;
     }
 
-    // Persist data using standardized keys across the app
+    // Saving updated information to localStorage
     localStorage.setItem("SpecialGoalName", goalName);
     localStorage.setItem("SpecialGoalShowValue", goalValue); 
     
-    // 💡 2. පේජ් එක රීලෝඩ් කරන්නේ නැතුව වමේ තියෙන ප්‍රිවීව් වැලියු එක එවලේම අප්ඩේට් කරනවා
-    setPreviewTarget(Number(goalValue));
+    const targetNum = Number(goalValue);
+    setPreviewTarget(targetNum);
     
+    // Re-calculating progress instantly upon adding a new target configuration
+    const accumulatedAmount = Number(localStorage.getItem("SpecialGoalValue")) || 0;
+    const calculatedProgress = targetNum > 0 ? Math.min(Math.round((accumulatedAmount / targetNum) * 100), 100) : 0;
+    setLiveProgress(calculatedProgress);
+
     alert("Special Goal Target configured successfully! 🚀");
-    
-    // 💡 3. ඕන නම් සේව් වුණාට පස්සේ ඉන්පුට් ෆීල්ඩ්ස් ටික මෙතනින් හිස් කරන්න පුළුවන්:
-    // setGoalName("");
-    // setGoalValue("");
   };
 
   return (
     <div className="min-h-screen bg-[#0f111a] text-white flex flex-col justify-between">
-      {/* <Navbar /> */}
-
       {/* --- MAIN CONTENT CONTAINER --- */}
       <div className="flex-grow flex items-center justify-center px-6 py-16 relative overflow-hidden">
         
@@ -58,7 +65,7 @@ function SpecialGoal() {
         {/* Responsive Dual-Column Grid */}
         <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
           
-          {/* ⬅ LEFT COLUMN: MARKETING COPY & CORE VALUE STATEMENT */}
+          {/* ⬅ LEFT COLUMN: MARKETING COPY & REAL-TIME PREVIEW */}
           <div className="space-y-6 text-center md:text-left hidden md:block">
             <div className="inline-block px-3 py-1 bg-[#00e5ff]/10 border border-[#00e5ff]/30 rounded-full text-xs font-semibold text-[#00e5ff] uppercase tracking-wider">
                Smart Wealth Planning
@@ -76,13 +83,13 @@ function SpecialGoal() {
             {/* Quick Metrics Preview Dashboard */}
             <div className="flex gap-8 pt-4 border-t border-[#23283a] max-w-sm">
               <div>
+                {/* Dynamically connected to sync beautifully with the Dashboard updates */}
                 <p className="text-2xl font-bold text-[#00e5ff]">
-                  0%
+                  Progress: {liveProgress}%
                 </p>
                 <p className="text-xs text-gray-500 uppercase">Avg. Progress</p>
               </div>
               <div>
-                {/* 💡 4. දැන් මේ ලේබල් එක රීලෝඩ් නොවී ක්ෂණිකව අප්ඩේට් වෙනවා */}
                 <p className="text-2xl font-bold text-white">
                   Rs. {previewTarget ? previewTarget.toLocaleString() : "0"}
                 </p>
@@ -106,7 +113,7 @@ function SpecialGoal() {
 
               {/* Form Input Fields */}
               <div className="space-y-5">
-                {/* Goal Identification Name Field */}
+                {/* Goal Name Field */}
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                     Add your future goal
@@ -120,7 +127,7 @@ function SpecialGoal() {
                   />
                 </div>
 
-                {/* Target Capital Amount Input Field */}
+                {/* Target Capital Amount Field */}
                 <div>
                   <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
                     Target Amount
@@ -137,7 +144,7 @@ function SpecialGoal() {
                   </div>
                 </div>
 
-                {/* Primary Save Action Button */}
+                {/* Submit Action Button */}
                 <button 
                   onClick={handleSaveGoal}
                   type="button"
@@ -150,13 +157,13 @@ function SpecialGoal() {
               {/* Visual Divider Separator */}
               <div className="border-t border-[#23283a] my-6"></div>
 
-              {/* Secondary Navigation Option */}
+              {/* Secondary Navigation */}
               <div className="text-center">
                 <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">
                   Ready to check your Dashboard?
                 </h3>
                 <button
-                  onClick={() => navigate("/OnboardingSetupPage")} //  Dashboard එකේ path එකට නිවැරදිව මාරු කරන්න
+                  onClick={() => navigate("/OnboardingSetupPage")} 
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >
@@ -169,8 +176,6 @@ function SpecialGoal() {
 
         </div>
       </div>
-
-      {/* <Footer /> */}
     </div>
   );
 }

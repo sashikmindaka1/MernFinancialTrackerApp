@@ -66,8 +66,6 @@ function GetExpenses({
         return;
       }
       
-
-      
     }
 
     if (onAddTransaction) {
