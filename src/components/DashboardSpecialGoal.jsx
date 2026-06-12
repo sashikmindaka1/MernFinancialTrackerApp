@@ -43,7 +43,7 @@ function DashboardSpecialGoal() {
         <div>
           <p className="text-xs text-gray-400 font-medium mb-1">Total Contributed</p>
           <p className="text-lg font-bold text-emerald-400">
-            Rs. {targetAmount.toLocaleString()}
+            Rs. {accumulatedAmount.toLocaleString()}
           </p>
         </div>
         <div className="text-right">

@@ -56,7 +56,7 @@ function GetExpenses({
       const updated = Number(goalValue || 0) + expenseNum; 
       setGoalValue(updated);
 
-      localStorage.setItem("SpecialGoalShowValue", updated);
+      localStorage.setItem("SpecialGoalValue", updated);
     }
 
     if (onAddTransaction) {
