@@ -52,11 +52,22 @@ function GetExpenses({
       const updated = otherBudget - expenseNum;
       setOtherBudget(updated);
       localStorage.setItem("otherBudget", updated);
-    } else if (expenseCategory === "SpecialGoalShowValue") {
+    } else if (expenseCategory === "SpecialGoalShowValue")  {
+      const targetGoal = Number(localStorage.getItem("SpecialGoalShowValue") || 0);
       const updated = Number(goalValue || 0) + expenseNum; 
-      setGoalValue(updated);
 
-      localStorage.setItem("SpecialGoalValue", updated);
+      if (updated <= targetGoal) {
+        setGoalValue(updated);
+        localStorage.setItem("SpecialGoalValue", updated);
+
+      } else {
+        alert("You cant add value, Because you achieve your goal");
+
+        return;
+      }
+      
+
+      
     }
 
     if (onAddTransaction) {

@@ -103,8 +103,8 @@ function MainDashboardPage() {
             <ShortTransactionHistry transactions={transactions} />
           </div>
 
-          {/* ➡️ RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
-          {/* 💡 Box spacing and card structuring fixed here cleanly using flex-col gap-8 */}
+          {/*  RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
+          {/*  Box spacing and card structuring fixed here cleanly using flex-col gap-8 */}
           <div className="lg:col-span-2 order-1 lg:order-2 flex flex-col gap-8 w-full">
             <BudgetShow
               income={income}
