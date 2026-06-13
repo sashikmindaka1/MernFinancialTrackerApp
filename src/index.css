@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-dark-calendar .react-calendar {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+}
+.custom-dark-calendar .react-calendar__tile:hover {
+  background: #232836 !important;
+  border-radius: 8px;
+  color: #00e5ff !important;
+}
+.custom-dark-calendar .react-calendar__tile--active {
+  background: #00e5ff !important;
+  color: #0f1115 !important;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.custom-dark-calendar button {
+  color: #9ca3af !important;
+}
+.custom-dark-calendar button:hover {
+  color: white !important;
+}
