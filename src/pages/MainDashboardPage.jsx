@@ -3,6 +3,7 @@ import BudgetShow from "../components/BudgetShow";
 import GetExpenses from "../components/GetExpenses"; 
 import ShortTransactionHistry from "../components/ShortTransactionHistry";
 import DashboardSpecialGoal from "../components/DashboardSpecialGoal";  
+import AnalyticsInsightsPage from "./AnalyticsInsightsPage";
 
 function MainDashboardPage() {
   // --- FINANCIAL STATES ---
@@ -124,6 +125,8 @@ function MainDashboardPage() {
             accumulatedFromState={specialGoalValue} 
             setGoalValue={setSpecialGoalValue}
             />
+
+       
             
 
           </div>
