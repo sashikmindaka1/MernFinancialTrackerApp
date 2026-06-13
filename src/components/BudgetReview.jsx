@@ -40,6 +40,12 @@ function BudgetReview({
   }
 
 
+  // Date storing part
+  const today = new Date();
+  const formattedDate = today.toISOString().split('T')[0];
+
+  console.log(formattedDate);
+
 
 
   return (
@@ -127,8 +133,8 @@ function BudgetReview({
       
 
       <button onClick={() => {
-        localStorage.setItem("userIncome", income)
-        localStorage.setItem("userBudget", budget)
+        localStorage.setItem("userIncome", income);
+        localStorage.setItem("userBudget", budget);
         localStorage.setItem("foodBudget", numFood);
         localStorage.setItem("transportBudget", numTransport);
         localStorage.setItem("billsBudget", numBills);
@@ -138,6 +144,7 @@ function BudgetReview({
         localStorage.setItem("SpecialGoalShowValue", numSpecialGoal);
   
         localStorage.setItem("isOnboarded", "true"); 
+        localStorage.setItem("joinDate", formattedDate);
 
         alert("Saved Successfully! ");
         window.location.href = "/SpecialGoalsPage";
