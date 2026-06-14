@@ -27,6 +27,14 @@ function MainDashboardPage() {
   // Array state to hold the log of tracked expenses
   const [transactions, setTransactions] = useState([]); 
 
+  const [currentFoodBudget, SetCurrentFoodValue] = useState(0);
+  const [currentTransportBudget, setCurrentTransportBudget] = useState(0);
+  const [CurrentBillsBudget, setCurrentBillsBudget] = useState(0);
+  const [currentEntertainmentBudget, setCurrentEntertainmentBudget] = useState(0);
+  const [currentHealthBudget, setCurrentHealthBudget] = useState(0);
+  const [currentOtherBudget, setCurrentOtherBudget] = useState(0);
+
+ 
   // --- LIFECYCLE METHOD: LOAD PERSISTED DATA ON COMPONENT MOUNT ---
   useEffect(() => {
     const savedIncome = localStorage.getItem("userIncome");
@@ -38,8 +46,16 @@ function MainDashboardPage() {
     const savedHealth = localStorage.getItem("healthBudget");
     const savedOther = localStorage.getItem("otherBudget");
     const savedTransactions = localStorage.getItem("userTransactions");
+
+    const savedCurrentFood = localStorage.getItem("currentFoodBudget");
+    const savedCurrentTransport = localStorage.getItem("currentTransportBudget");
+    const savedCurrentBillsBudget = localStorage.getItem("currentBillsBudget");
+    const savedCurrentEntertainmentBudget = localStorage.getItem("CurrentEntertainmentBudget");
+    const savedCurrentHealthBudget = localStorage.getItem("currentHealthBudget");
+    const savedCurrentOtherBudget = localStorage.getItem("currentOtherBudget");
     
-    // 💡 Read the correct accumulated savings from localStorage for the goal box
+
+    //  Read the correct accumulated savings from localStorage for the goal box
     const savedSpecialGoal = localStorage.getItem("SpecialGoalValue");
 
     // Parse and load transaction history if records exist

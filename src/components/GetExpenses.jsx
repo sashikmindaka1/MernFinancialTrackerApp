@@ -11,6 +11,12 @@ function GetExpenses({
   onAddTransaction,
   goalName, setGoalName,
   goalValue, setGoalValue,
+  currentFoodBudget, SetCurrentFoodValue,
+  currentTransportBudget, setCurrentTransportBudget,
+  CurrentBillsBudget, setCurrentBillsBudget,
+  currentEntertainmentBudget, setCurrentEntertainmentBudget,
+  currentHealthBudget, setCurrentHealthBudget,
+  currentOtherBudget, setCurrentOtherBudget
 }) {
 
   // Local states for form inputs
@@ -28,30 +34,30 @@ function GetExpenses({
     const expenseNum = Number(amount);
 
     //  STEP 3: Checking category and updating the parent state + localStorage
-    if (expenseCategory === "foodBudget") {
+    if (expenseCategory === "FoodBudget") {
       const updated = foodBudget - expenseNum;
       setFoodBudget(updated);
-      localStorage.setItem("foodBudget", updated);
+      localStorage.setItem("currentFoodBudget", updated);
     } else if (expenseCategory === "transportBudget") {
       const updated = transportBudget - expenseNum;
       setTransportBudget(updated);
-      localStorage.setItem("transportBudget", updated);
+      localStorage.setItem("currentTransportBudget", updated);
     } else if (expenseCategory === "billsBudget") {
       const updated = billsBudget - expenseNum;
       setBillsBudget(updated);
-      localStorage.setItem("billsBudget", updated);
+      localStorage.setItem("currentBillsBudget", updated);
     } else if (expenseCategory === "entertainmentBudget") {
       const updated = entertainmentBudget - expenseNum;
       setEntertainmentBudget(updated);
-      localStorage.setItem("entertainmentBudget", updated);
+      localStorage.setItem("CurrentEntertainmentBudget", updated);
     } else if (expenseCategory === "healthBudget") {
       const updated = healthBudget - expenseNum;
       setHealthBudget(updated);
-      localStorage.setItem("healthBudget", updated);
+      localStorage.setItem("currentHealthBudget", updated);
     } else if (expenseCategory === "otherBudget") {
       const updated = otherBudget - expenseNum;
       setOtherBudget(updated);
-      localStorage.setItem("otherBudget", updated);
+      localStorage.setItem("currentOtherBudget", updated);
     } else if (expenseCategory === "SpecialGoalShowValue")  {
       const targetGoal = Number(localStorage.getItem("SpecialGoalShowValue") || 0);
       const updated = Number(goalValue || 0) + expenseNum; 
