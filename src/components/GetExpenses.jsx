@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-//  STEP 1: Destructuring all needed budget states and setters as Props
 function GetExpenses({
   foodBudget, setFoodBudget,
   transportBudget, setTransportBudget,
@@ -11,21 +10,23 @@ function GetExpenses({
   onAddTransaction,
   goalName, setGoalName,
   goalValue, setGoalValue,
-  currentFoodBudget, SetCurrentFoodValue,
+  
+  // Active remaining tracking budgets and state setters synchronized from parent layout
+  currentFoodBudget, setCurrentFoodBudget,
   currentTransportBudget, setCurrentTransportBudget,
-  CurrentBillsBudget, setCurrentBillsBudget,
+  currentBillsBudget, setCurrentBillsBudget,
   currentEntertainmentBudget, setCurrentEntertainmentBudget,
   currentHealthBudget, setCurrentHealthBudget,
   currentOtherBudget, setCurrentOtherBudget
 }) {
 
-  // Local states for form inputs
+  // Local states for management of form inputs
   const [amount, setAmount] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("foodBudget");
 
-  //  STEP 2: Logic for handling expense submission
+  // Logic for validation and processing expense submission
   const handleExpenseSubmit = () => {
-    // Validation
+    // Input validation checks
     if (!amount || Number(amount) <= 0) {
       alert("Please enter a valid amount.");
       return;
@@ -33,54 +34,62 @@ function GetExpenses({
 
     const expenseNum = Number(amount);
 
-    //  STEP 3: Checking category and updating the parent state + localStorage
-    if (expenseCategory === "FoodBudget") {
-      const updated = foodBudget - expenseNum;
-      setFoodBudget(updated);
+    // Evaluate designated category, compute deductions from active remaining balance, and persist to storage
+    if (expenseCategory === "foodBudget") {
+      const updated = Number(currentFoodBudget) - expenseNum;
+      setCurrentFoodBudget(updated);
       localStorage.setItem("currentFoodBudget", updated);
+      
     } else if (expenseCategory === "transportBudget") {
-      const updated = transportBudget - expenseNum;
-      setTransportBudget(updated);
+      const updated = Number(currentTransportBudget) - expenseNum;
+      setCurrentTransportBudget(updated);
       localStorage.setItem("currentTransportBudget", updated);
+      
     } else if (expenseCategory === "billsBudget") {
-      const updated = billsBudget - expenseNum;
-      setBillsBudget(updated);
+      const updated = Number(currentBillsBudget) - expenseNum;
+      setCurrentBillsBudget(updated);
       localStorage.setItem("currentBillsBudget", updated);
+      
     } else if (expenseCategory === "entertainmentBudget") {
-      const updated = entertainmentBudget - expenseNum;
-      setEntertainmentBudget(updated);
-      localStorage.setItem("CurrentEntertainmentBudget", updated);
+      const updated = Number(currentEntertainmentBudget) - expenseNum;
+      setCurrentEntertainmentBudget(updated);
+      localStorage.setItem("currentEntertainmentBudget", updated);
+      
     } else if (expenseCategory === "healthBudget") {
-      const updated = healthBudget - expenseNum;
-      setHealthBudget(updated);
+      const updated = Number(currentHealthBudget) - expenseNum;
+      setCurrentHealthBudget(updated);
       localStorage.setItem("currentHealthBudget", updated);
+      
     } else if (expenseCategory === "otherBudget") {
-      const updated = otherBudget - expenseNum;
-      setOtherBudget(updated);
+      const updated = Number(currentOtherBudget) - expenseNum;
+      setCurrentOtherBudget(updated);
       localStorage.setItem("currentOtherBudget", updated);
+      
     } else if (expenseCategory === "SpecialGoalShowValue")  {
       const targetGoal = Number(localStorage.getItem("SpecialGoalShowValue") || 0);
       const updated = Number(goalValue || 0) + expenseNum; 
 
+      // Verification to prevent progression past defined goal ceiling
       if (updated <= targetGoal) {
         setGoalValue(updated);
         localStorage.setItem("SpecialGoalValue", updated);
-
       } else {
         alert("You cant add value, Because you achieve your goal");
-
         return;
       }
-      
     }
 
+    // Pass metrics to parent tracker to update global transaction history log
     if (onAddTransaction) {
       onAddTransaction(expenseCategory, expenseNum);
     }
     
-    //  STEP 4: Clear input field after success
+    // Reset local field states and notify user of operational success
     setAmount("");
-    alert("Expense added successfully! ");
+    alert("Expense added successfully!");
+
+    // Trigger full location reload to properly re-hydrate data models and refresh view configuration
+    window.location.reload();
   };
 
   return (
