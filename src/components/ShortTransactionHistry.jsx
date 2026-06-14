@@ -7,7 +7,7 @@ function ShortTransactionHistry({transactions = []}) {
       
       {/* 1. Header Title */}
       <h3 className="text-xs font-bold mb-4 text-gray-400 uppercase tracking-widest flex items-center gap-2">
-        <span>⚡</span> Recent Expenses
+        <span></span> Recent Expenses
       </h3>
 
       {/* 2. Logic Check: If the array is empty, show a message */}

@@ -11,10 +11,28 @@ function SpecialGoal() {
   const [liveProgress, setLiveProgress] = useState(0);
 
   // --- LIFECYCLE: FETCH ALL PERSISTED DATA ON MOUNT ---
-  useEffect(() => {
-    const savedGoalName = localStorage.getItem("SpecialGoalName") || "";
+  const handleResetAndRefresh = () => {
+     const savedGoalName = localStorage.getItem("SpecialGoalName") || "";
     const savedGoalValue = localStorage.getItem("SpecialGoalShowValue") || ""; 
     const accumulatedAmount = Number(localStorage.getItem("SpecialGoalValue")) || 0;
+
+    
+    localStorage.removeItem("userIncome");
+    localStorage.removeItem("userBudget");
+    localStorage.removeItem("foodBudget");
+    localStorage.removeItem("transportBudget");
+    localStorage.removeItem("billsBudget");
+    localStorage.removeItem("entertainmentBudget");
+    localStorage.removeItem("healthBudget");
+    localStorage.removeItem("otherBudget");
+    localStorage.removeItem("userTransactions");
+    localStorage.removeItem("currentFoodBudget");
+    localStorage.removeItem("currentTransportBudget");
+    localStorage.removeItem("currentBillsBudget");
+    localStorage.removeItem("CurrentEntertainmentBudget");
+    localStorage.removeItem("currentHealthBudget");
+    localStorage.removeItem("currentOtherBudget");
+
 
     setGoalName(savedGoalName);
     setGoalValue(savedGoalValue);
@@ -29,7 +47,12 @@ function SpecialGoal() {
     } else {
       setLiveProgress(0);
     }
-  }, []);
+    alert("reset old data")
+    navigate("/OnboardingSetupPage");
+
+  };
+   
+  
 
   // --- HANDLER: CONFIGURING & SAVING THE TARGET ---
   const handleSaveGoal = () => {
@@ -163,7 +186,7 @@ function SpecialGoal() {
                   Ready to check your Dashboard?
                 </h3>
                 <button
-                  onClick={() => navigate("/OnboardingSetupPage")} 
+                  onClick={handleResetAndRefresh} 
                   type="button"
                   className="w-full bg-[#1e2332]/50 border border-[#2d3548] text-[#00e5ff] hover:bg-[#00e5ff]/10 font-bold py-3 px-4 rounded-xl transition-all uppercase tracking-wider text-xs"
                 >

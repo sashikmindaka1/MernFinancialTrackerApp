@@ -134,21 +134,33 @@ function MainDashboardPage() {
           {/*  RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
           {/*  Box spacing and card structuring fixed here cleanly using flex-col gap-8 */}
           <div className="lg:col-span-2 order-1 lg:order-2 flex flex-col gap-8 w-full">
+            
             <BudgetShow
               income={income}
               budget={budget}
               saving={saving}
-              foodBudget={foodBudget}
-              transportBudget={transportBudget}
-              billsBudget={billsBudget}
-              entertainmentBudget={entertainmentBudget}
-              healthBudget={healthBudget}
-              otherBudget={otherBudget} 
-              initialTotalBudget={initialTotalBudget}
+
+              // remaining balalnce states
+              currentFoodBudget={currentFoodBudget}
+              currentTransportBudget={currentTransportBudget}
+              currentBillsBudget={currentBillsBudget}
+              currentEntertainmentBudget={currentEntertainmentBudget}
+              currentHealthBudget={currentHealthBudget}
+              currentOtherBudget={currentOtherBudget}
+
+              // Initial Goal/Allocation States
+              initialFoodBudget={foodBudget}
+              initialTransportBudget={transportBudget}
+              initialBillsBudget={billsBudget}
+              initialEntertainmentBudget={entertainmentBudget}
+              initialHealthBudget={healthBudget}
+              initialOtherBudget={otherBudget}
+
+              
              
             />
             
-            {/* 🎯 Special Goal box sits perfectly parallel to the input form below the charts */}
+            {/*  Special Goal box sits perfectly parallel to the input form below the charts */}
             <DashboardSpecialGoal 
             accumulatedFromState={specialGoalValue} 
             setGoalValue={setSpecialGoalValue}
