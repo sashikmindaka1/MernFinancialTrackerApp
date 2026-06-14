@@ -27,7 +27,7 @@ function MainDashboardPage() {
   // Array state to hold the log of tracked expenses
   const [transactions, setTransactions] = useState([]); 
 
-  const [currentFoodBudget, SetCurrentFoodValue] = useState(0);
+  const [currentFoodBudget, SetCurrentFoodBudget] = useState(0);
   const [currentTransportBudget, setCurrentTransportBudget] = useState(0);
   const [CurrentBillsBudget, setCurrentBillsBudget] = useState(0);
   const [currentEntertainmentBudget, setCurrentEntertainmentBudget] = useState(0);
@@ -47,8 +47,8 @@ function MainDashboardPage() {
     const savedOther = localStorage.getItem("otherBudget");
     const savedTransactions = localStorage.getItem("userTransactions");
 
-    const savedCurrentFood = localStorage.getItem("currentFoodBudget");
-    const savedCurrentTransport = localStorage.getItem("currentTransportBudget");
+    const savedCurrentFoodBudget = localStorage.getItem("currentFoodBudget");
+    const savedCurrentTransportBudget = localStorage.getItem("currentTransportBudget");
     const savedCurrentBillsBudget = localStorage.getItem("currentBillsBudget");
     const savedCurrentEntertainmentBudget = localStorage.getItem("CurrentEntertainmentBudget");
     const savedCurrentHealthBudget = localStorage.getItem("currentHealthBudget");
@@ -114,6 +114,17 @@ function MainDashboardPage() {
               healthBudget={healthBudget} setHealthBudget={setHealthBudget}
               otherBudget={otherBudget} setOtherBudget={setOtherBudget}
               goalValue={specialGoalValue} setGoalValue={setSpecialGoalValue}
+
+              currentFoodBudget={currentFoodBudget} SetCurrentFoodValue={SetCurrentFoodBudget}
+              currentTransportBudget={currentTransportBudget} setCurrentTransportBudget={setCurrentTransportBudget}
+              currentEntertainmentBudget={currentEntertainmentBudget} setCurrentEntertainmentBudget={setCurrentEntertainmentBudget}
+              CurrentBillsBudget={CurrentBillsBudget} setCurrentBillsBudget={setCurrentBillsBudget}
+              currentHealthBudget={currentHealthBudget} setCurrentHealthBudget={setCurrentHealthBudget}
+              currentOtherBudget={currentOtherBudget} setCurrentOtherBudget={setCurrentOtherBudget}
+
+
+
+
               onAddTransaction={handleAddTransaction}
             />
 
@@ -134,6 +145,7 @@ function MainDashboardPage() {
               healthBudget={healthBudget}
               otherBudget={otherBudget} 
               initialTotalBudget={initialTotalBudget}
+             
             />
             
             {/* 🎯 Special Goal box sits perfectly parallel to the input form below the charts */}
