@@ -54,8 +54,8 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/TransactionsHistoryPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
-            Transactions History
+          <Link to="/AboutUsPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+            About Us
           </Link>
         </li>
       </ul>

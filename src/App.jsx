@@ -7,7 +7,7 @@ import OnboardingSetupPage from './pages/OnboardingSetupPage';
 import MainDashboardPage from './pages/MainDashboardPage';
 import AnalyticsInsightsPage from './pages/AnalyticsInsightsPage';
 import Homepage from './pages/Homepage';
-import TransactionsHistoryPage from './pages/TransactionsHistoryPage';  
+import AboutUsPage from './pages/AboutUsPage';  
 import SpecialGoal from './pages/SpecialGoal';  
 
 
@@ -35,8 +35,8 @@ const router = createBrowserRouter([
         element: <AnalyticsInsightsPage />
       },
       {
-        path: "/TransactionsHistoryPage",
-        element: <TransactionsHistoryPage />
+        path: "/AboutUsPage",
+        element: <AboutUsPage />
       },
 
       {
