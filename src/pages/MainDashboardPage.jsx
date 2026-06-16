@@ -79,7 +79,7 @@ function MainDashboardPage() {
     // Assign stored special goal amount to state if it exists
     if (savedSpecialGoal) setSpecialGoalValue(Number(savedSpecialGoal));
 
-    // 3. 🔥 CRITICAL HYDRATION: Sync Active Remaining States with fallback to baseline allocations
+    // 3. CRITICAL HYDRATION: Sync Active Remaining States with fallback to baseline allocations
     setCurrentFoodBudget(savedCurrentFoodBudget !== null ? Number(savedCurrentFoodBudget) : Number(savedFood || 0));
     setCurrentTransportBudget(savedCurrentTransportBudget !== null ? Number(savedCurrentTransportBudget) : Number(savedTransport || 0));
     setCurrentBillsBudget(savedCurrentBillsBudget !== null ? Number(savedCurrentBillsBudget) : Number(savedBills || 0));
@@ -111,7 +111,7 @@ function MainDashboardPage() {
         {/* Responsive Grid Layout Definition */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start w-full">
           
-          {/* ⬅️ LEFT COLUMN: EXPENSE SUBMISSION FORM & TRANSACTION HISTORY */}
+          {/* LEFT COLUMN: EXPENSE SUBMISSION FORM & TRANSACTION HISTORY */}
           <div className="lg:col-span-1 order-2 lg:order-1 flex flex-col gap-8 w-full">
             <GetExpenses 
               foodBudget={foodBudget} setFoodBudget={setFoodBudget}
@@ -136,7 +136,7 @@ function MainDashboardPage() {
             <ShortTransactionHistry transactions={transactions} />
           </div>
 
-          {/* ➡️ RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
+          {/*  RIGHT COLUMN: OVERVIEW STATS & PROGRESS TRACKING */}
           <div className="lg:col-span-2 order-1 lg:order-2 flex flex-col gap-8 w-full">
             
             <BudgetShow

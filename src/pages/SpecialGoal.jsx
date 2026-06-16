@@ -29,7 +29,7 @@ function SpecialGoal() {
     localStorage.removeItem("currentFoodBudget");
     localStorage.removeItem("currentTransportBudget");
     localStorage.removeItem("currentBillsBudget");
-    localStorage.removeItem("CurrentEntertainmentBudget");
+    localStorage.removeItem("currentEntertainmentBudget");
     localStorage.removeItem("currentHealthBudget");
     localStorage.removeItem("currentOtherBudget");
 

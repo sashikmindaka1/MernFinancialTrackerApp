@@ -56,12 +56,12 @@ function AnalyticsInsightsPage() {
 
   // Read raw tracking data values straight from localStorage state hydration
   useEffect(() => {
-    const foodVal = Number(localStorage.getItem("foodBudget")) || 0;
-    const transportVal = Number(localStorage.getItem("transportBudget")) || 0;
-    const billsVal = Number(localStorage.getItem("billsBudget")) || 0;
-    const entertainmentVal = Number(localStorage.getItem("entertainmentBudget")) || 0;
-    const healthVal = Number(localStorage.getItem("healthBudget")) || 0;
-    const otherVal = Number(localStorage.getItem("otherBudget")) || 0;
+    const foodVal = Number(localStorage.getItem("currentFoodBudget")) || 0;
+    const transportVal = Number(localStorage.getItem("currentTransportBudget")) || 0;
+    const billsVal = Number(localStorage.getItem("currentBillsBudget")) || 0;
+    const entertainmentVal = Number(localStorage.getItem("currentEntertainmentBudget")) || 0;
+    const healthVal = Number(localStorage.getItem("currentHealthBudget")) || 0;
+    const otherVal = Number(localStorage.getItem("currentOtherBudget")) || 0;
 
     setFood(foodVal);
     setTransport(transportVal);
@@ -224,7 +224,7 @@ function AnalyticsInsightsPage() {
             </p>
           </div>
 
-          {/* 📅 CALENDAR DROP-DOWN CONTAINER PINNED TO THE RIGHT CORNER */}
+          {/*  CALENDAR DROP-DOWN CONTAINER PINNED TO THE RIGHT CORNER */}
           <div className="relative self-center md:self-end z-30" ref={calRef}>
             <button
               onClick={() => setIsCalOpen(!isCalOpen)}
