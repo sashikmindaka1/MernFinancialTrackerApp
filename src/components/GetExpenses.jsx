@@ -47,37 +47,37 @@ function GetExpenses({
       const updated = Number(currentFoodBudget) - expenseNum;
       setCurrentFoodBudget(updated);
       localStorage.setItem("currentFoodBudget", updated);
-      localStorage.setItem("addFoodBudget");
+      localStorage.setItem("addFoodBudget", expenseNum);
       
     } else if (expenseCategory === "transportBudget") {
       const updated = Number(currentTransportBudget) - expenseNum;
       setCurrentTransportBudget(updated);
       localStorage.setItem("currentTransportBudget", updated);
-      localStorage.setItem("addTransportBudget");
+      localStorage.setItem("addTransportBudget", expenseNum);
       
     } else if (expenseCategory === "billsBudget") {
       const updated = Number(currentBillsBudget) - expenseNum;
       setCurrentBillsBudget(updated);
       localStorage.setItem("currentBillsBudget", updated);
-      localStorage.setItem("addBillsBudget");
+      localStorage.setItem("addBillsBudget", expenseNum);
       
     } else if (expenseCategory === "entertainmentBudget") {
       const updated = Number(currentEntertainmentBudget) - expenseNum;
       setCurrentEntertainmentBudget(updated);
       localStorage.setItem("currentEntertainmentBudget", updated);
-      localStorage.setItem("addEntertainmentBudget");
+      localStorage.setItem("addEntertainmentBudget", expenseNum);
       
     } else if (expenseCategory === "healthBudget") {
       const updated = Number(currentHealthBudget) - expenseNum;
       setCurrentHealthBudget(updated);
       localStorage.setItem("currentHealthBudget", updated);
-      localStorage.setItem("addHealthBudget");
+      localStorage.setItem("addHealthBudget", expenseNum);
       
     } else if (expenseCategory === "otherBudget") {
       const updated = Number(currentOtherBudget) - expenseNum;
       setCurrentOtherBudget(updated);
       localStorage.setItem("currentOtherBudget", updated);
-      localStorage.setItem("addOtherBudget");
+      localStorage.setItem("addOtherBudget", expenseNum);
       
     } else if (expenseCategory === "SpecialGoalShowValue")  {
       const targetGoal = Number(localStorage.getItem("SpecialGoalShowValue") || 0);

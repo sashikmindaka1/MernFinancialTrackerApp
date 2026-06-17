@@ -77,8 +77,39 @@ function AnalyticsInsightsPage() {
     setIncome(Number(localStorage.getItem("userIncome")) || 0);
   }, []);
 
-  // Compute total savings metric dynamically
-  const savings = income - totalExpenses;
+
+  // addExpenses bar chart(it create using newst expenses)
+    const [addFood,setAddFood] = useState(0);
+    const [addTransport, setAddTransport] = useState(0);
+    const [addBills, setAddBills] = useState(0);
+    const [addEntertainment, setAddEntertainment] = useState(0);
+    const [addHealth, setAddHealth] = useState(0);
+    const [addOther, setAddOther] =useState(0);
+    const [totalAddExpenses, setTotalAddExpenses] =useState(0);
+
+  useEffect(() => {
+
+    const addFoodValue = Number(localStorage.getItem("addFoodBudget")) || 0;
+    const addTransportValue = Number(localStorage.getItem("addTransportBudget")) || 0;
+    const addBillsValue = Number(localStorage.getItem("addBillsBudget")) ||0;
+    const addEntertainmentValue = Number(localStorage.getItem("addEntertainmentBudget")) ||0;
+    const addHealthValue = Number(localStorage.getItem("addHealthBudget")) ||0;
+    const addOtherValue = Number(localStorage.getItem("addOtherBudget")) ||0;
+
+    setAddFood(addFoodValue);
+    setAddTransport(addTransportValue);
+    setAddBills(addBillsValue);
+    setAddEntertainment(addEntertainmentValue);
+    setAddHealth(addHealthValue);
+    setAddOther(addOtherValue);
+
+    setTotalAddExpenses (addFoodValue + addTransportValue + addBillsValue + addEntertainmentValue + addHealthValue + addOtherValue);
+     
+    
+  }, []);
+
+    // Compute total savings metric dynamically
+    const savings = income - totalAddExpenses;
 
   // Premium Doughnut UI configuration structures mapping to the layout image specifications
   const DhonutGraphData = {
@@ -153,7 +184,7 @@ function AnalyticsInsightsPage() {
     datasets: [
       {
         label: "Amount (Rs.)",
-        data: [income, totalExpenses],
+        data: [income, totalAddExpenses],
         backgroundColor: [
           "rgba(16, 185, 129, 0.5)",  // Emerald Green for Income bar
           "rgba(0, 229, 255, 0.5)"    // Cyan color fill matching Expenses bar
@@ -198,7 +229,7 @@ function AnalyticsInsightsPage() {
       y: {
         grid: { color: "rgba(35, 40, 58, 0.2)" },
         ticks: { color: "#6b7280" },
-        suggestedMax: Math.max(income, totalExpenses) * 1.2
+        suggestedMax: Math.max(income, totalAddExpenses) * 1.2
       }
     }
   };

@@ -105,12 +105,13 @@ function MainDashboardPage() {
     setCurrentOtherBudget(savedCurrentOtherBudget !== null ? Number(savedCurrentOtherBudget) : Number(savedOther || 0));
 
 
-    if(savedAddFoodBudget) setAddFoodBudget(Number(savedAddFoodBudget));
-    if(savedAddTransportBudget) setAddTransportBudget(Number(savedCurrentTransportBudget));
-    if(savedAddBillsBudget) setAddTransportBudget(Number(savedAddBillsBudget));
-    if(savedAddEntertainmentBudget)  setAddEntertainmentBudget(savedAddEntertainmentBudget);
-    if(savedAddHealthBudget) setAddHealthBudget(Number(savedAddOtherBudget));
-    if(savedAddOtherBudget) setAddOtherBudget(Number(savedAddOtherBudget));
+    // --- බාර් චාර්ට් දත්ත නිවැරදිව ලෝඩ් කිරීම ---
+     if (savedAddFoodBudget) setAddFoodBudget(Number(savedAddFoodBudget));
+     if (savedAddTransportBudget) setAddTransportBudget(Number(savedAddTransportBudget));
+     if (savedAddBillsBudget) setAddBillsBudget(Number(savedAddBillsBudget));
+     if (savedAddEntertainmentBudget) setAddEntertainmentBudget(Number(savedAddEntertainmentBudget));
+     if (savedAddHealthBudget) setAddHealthBudget(Number(savedAddHealthBudget));
+     if (savedAddOtherBudget) setAddOtherBudget(Number(savedAddOtherBudget));
 
     
 
@@ -157,7 +158,16 @@ function MainDashboardPage() {
               currentHealthBudget={currentHealthBudget} setCurrentHealthBudget={setCurrentHealthBudget}
               currentOtherBudget={currentOtherBudget} setCurrentOtherBudget={setCurrentOtherBudget}
 
+
+              addFoodBudget={addFoodBudget} setAddFoodBudget={setAddFoodBudget}
+              addTransportBudget={addTransportBudget} setAddTransportBudget={setAddTransportBudget}
+              addBillsBudget={addBillsBudget} setAddBillsBudget={setAddBillsBudget}
+              addEntertainmentBudget={addEntertainmentBudget} setAddEntertainmentBudget={setAddEntertainmentBudget}
+              addHealthBudget={addHealthBudget} setAddHealthBudget={setAddHealthBudget}
+              addOtherBudget={addOtherBudget} setAddOtherBudget={setAddOtherBudget}
+
               onAddTransaction={handleAddTransaction}
+
             />
 
             <ShortTransactionHistry transactions={transactions} />
