@@ -32,6 +32,13 @@ function SpecialGoal() {
     localStorage.removeItem("currentEntertainmentBudget");
     localStorage.removeItem("currentHealthBudget");
     localStorage.removeItem("currentOtherBudget");
+    localStorage.removeItem("addFoodBudget");
+    localStorage.removeItem("addTransportBudget");
+    localStorage.removeItem("addBillsBudget");
+    localStorage.removeItem("addEntertainmentBudget");
+    localStorage.removeItem("addHealthBudget");
+    localStorage.removeItem("addOtherBudget");
+
 
 
     setGoalName(savedGoalName);
