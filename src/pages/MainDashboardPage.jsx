@@ -34,6 +34,13 @@ function MainDashboardPage() {
   const [currentHealthBudget, setCurrentHealthBudget] = useState(0);
   const [currentOtherBudget, setCurrentOtherBudget] = useState(0);
 
+  const [addFoodBudget, setAddFoodBudget] = useState(0);
+  const [addTransportBudget, setAddTransportBudget] = useState(0);
+  const [addBillsBudget, setAddBillsBudget] = useState(0);
+  const [addEntertainmentBudget, setAddEntertainmentBudget] = useState(0);
+  const [addHealthBudget, setAddHealthBudget] = useState(0);
+  const [addOtherBudget, setAddOtherBudget] = useState(0);
+
   // --- LIFECYCLE METHOD: LOAD PERSISTED DATA ON COMPONENT MOUNT ---
   useEffect(() => {
     // 1. Fetch original constant allocations
@@ -54,7 +61,17 @@ function MainDashboardPage() {
     const savedCurrentEntertainmentBudget = localStorage.getItem("currentEntertainmentBudget");
     const savedCurrentHealthBudget = localStorage.getItem("currentHealthBudget");
     const savedCurrentOtherBudget = localStorage.getItem("currentOtherBudget");
-    
+
+
+    // bar chart expenses part
+    const savedAddFoodBudget = localStorage.getItem("addFoodBudget");
+    const savedAddTransportBudget = localStorage.getItem("addTransportBudget");
+    const savedAddBillsBudget = localStorage.getItem("addBillsBudget");
+    const savedAddEntertainmentBudget = localStorage.getItem("addEntertainmentBudget");
+    const savedAddHealthBudget = localStorage.getItem("addHealthBudget");
+    const savedAddOtherBudget = localStorage.getItem("addOtherBudget");
+
+
     // Read the correct accumulated savings from localStorage for the goal box
     const savedSpecialGoal = localStorage.getItem("SpecialGoalValue");
 
@@ -86,6 +103,16 @@ function MainDashboardPage() {
     setCurrentEntertainmentBudget(savedCurrentEntertainmentBudget !== null ? Number(savedCurrentEntertainmentBudget) : Number(savedEntertainment || 0));
     setCurrentHealthBudget(savedCurrentHealthBudget !== null ? Number(savedCurrentHealthBudget) : Number(savedHealth || 0));
     setCurrentOtherBudget(savedCurrentOtherBudget !== null ? Number(savedCurrentOtherBudget) : Number(savedOther || 0));
+
+
+    if(savedAddFoodBudget) setAddFoodBudget(Number(savedAddFoodBudget));
+    if(savedAddTransportBudget) setAddTransportBudget(Number(savedCurrentTransportBudget));
+    if(savedAddBillsBudget) setAddTransportBudget(Number(savedAddBillsBudget));
+    if(savedAddEntertainmentBudget)  setAddEntertainmentBudget(savedAddEntertainmentBudget);
+    if(savedAddHealthBudget) setAddHealthBudget(Number(savedAddOtherBudget));
+    if(savedAddOtherBudget) setAddOtherBudget(Number(savedAddOtherBudget));
+
+    
 
   }, []); 
 
