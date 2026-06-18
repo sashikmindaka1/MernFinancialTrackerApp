@@ -47,37 +47,49 @@ function GetExpenses({
       const updated = Number(currentFoodBudget) - expenseNum;
       setCurrentFoodBudget(updated);
       localStorage.setItem("currentFoodBudget", updated);
-      localStorage.setItem("addFoodBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addFoodBudget"));
+      localStorage.setItem("addFoodBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "transportBudget") {
       const updated = Number(currentTransportBudget) - expenseNum;
       setCurrentTransportBudget(updated);
       localStorage.setItem("currentTransportBudget", updated);
-      localStorage.setItem("addTransportBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addTransportBudget"));
+      localStorage.setItem("addTransportBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "billsBudget") {
       const updated = Number(currentBillsBudget) - expenseNum;
       setCurrentBillsBudget(updated);
       localStorage.setItem("currentBillsBudget", updated);
-      localStorage.setItem("addBillsBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addBillsBudget"));
+      localStorage.setItem("addBillsBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "entertainmentBudget") {
       const updated = Number(currentEntertainmentBudget) - expenseNum;
       setCurrentEntertainmentBudget(updated);
       localStorage.setItem("currentEntertainmentBudget", updated);
-      localStorage.setItem("addEntertainmentBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addEntertainmentBudget"));
+      localStorage.setItem("addEntertainmentBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "healthBudget") {
       const updated = Number(currentHealthBudget) - expenseNum;
       setCurrentHealthBudget(updated);
       localStorage.setItem("currentHealthBudget", updated);
-      localStorage.setItem("addHealthBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addHealthBudget"));
+      localStorage.setItem("addHealthBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "otherBudget") {
       const updated = Number(currentOtherBudget) - expenseNum;
       setCurrentOtherBudget(updated);
       localStorage.setItem("currentOtherBudget", updated);
-      localStorage.setItem("addOtherBudget", expenseNum);
+      // get old add expenses values and sum with new expense
+      const oldExpenses = Number(localStorage.getItem("addOtherBudget"));
+      localStorage.setItem("addOtherBudget", expenseNum + oldExpenses);
       
     } else if (expenseCategory === "SpecialGoalShowValue")  {
       const targetGoal = Number(localStorage.getItem("SpecialGoalShowValue") || 0);
