@@ -55,7 +55,7 @@ function OnboardingSetupPage() {
         );
       case 3:
         return (
-          /* 🚨 Passing all collected states to ReviewStep for final summary display */
+          /* Passing all collected states to ReviewStep for final summary display */
           <BudgetReview
             income={income}
             budget={budget}

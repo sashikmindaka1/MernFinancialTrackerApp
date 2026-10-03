@@ -1,6 +1,34 @@
 import React from 'react';
 
 function IncomeeStep({ income, setIncome, nextStep }) {
+
+  const handleNext = async () => {
+    try{
+      const responce = await fetch('http://localhost:5000/api/wallet', {
+
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json' },
+        body: JSON.stringify({ totalSalary: Number(income)})
+      });
+
+      if(responce.ok) {
+        console.log("salary saved sucessfully");
+        nextStep();
+      }
+
+    } catch (error){
+      const errorData = await responce.json();
+      console.error("Backend error:", error);
+
+    }
+  };
+
+
+
+
+
+
+
   return (
     // Match the exact parent card layout and scale as the BudgetReview component
     <div className="w-full min-h-[550px] md:max-w-4xl p-8 md:p-16 bg-[#161920]/90 border border-[#232836] rounded-2xl shadow-2xl mx-auto flex flex-col justify-between">
@@ -49,7 +77,7 @@ function IncomeeStep({ income, setIncome, nextStep }) {
       <div className="max-w-xl w-full mx-auto">
         <button
           className="w-full py-4 px-6 bg-gradient-to-r from-[#00f2fe] to-[#4facfe] text-black font-bold text-base rounded-xl uppercase tracking-wider transition-all duration-200 disabled:from-[#232936] disabled:to-[#232936] disabled:text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none enabled:hover:shadow-[0_10px_20px_rgba(0,242,254,0.2)] enabled:hover:-translate-y-0.5 enabled:active:translate-y-0"
-          onClick={nextStep}
+          onClick={handleNext}
           disabled={!income || income <= 0}
         >
           Next Step
