@@ -17,17 +17,9 @@ function Navbar() {
   const renderButton = isOnboarded === "true" ? <Link to="/SpecialGoalsPage">Special Goal</Link> : <Link to="/OnboardingSetupPage">Onboarding Setup</Link>;
 
 
-  
-
-
-
-
-
-
-
   return (
-    // bg-white/10 සහ backdrop-blur-md එකෙන් Glassmorphism එක ලස්සනට එනවා
-    <nav className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-10 py-2 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg">
+    // bg-white/10 backdrop-blur-md 
+    <nav className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center px-10 py-2 bg-transparent  backdrop-blur-md border-b border-white/10 shadow-lg">
       
       {/* LOGO AREA */}
       <div className="flex items-center">
@@ -39,22 +31,22 @@ function Navbar() {
       {/* NAV LINKS */}
       <ul className="flex justify-center gap-10 list-none m-0 p-0">
         <li>
-          <Link to="/OnboardingSetupPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/OnboardingSetupPage" className="text-xl text-slate-50 font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
            {renderButton}
           </Link>
         </li>
         <li>
-          <Link to="/MainDashboardPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/MainDashboardPage" className="text-xl text-slate-50 font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Main Dashboard
           </Link>
         </li>
         <li>
-          <Link to="/Analytics&InsightsPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/Analytics&InsightsPage" className="text-xl text-slate-50 font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             Analytics & Insights
           </Link>
         </li>
         <li>
-          <Link to="/AboutUsPage" className="text-xl text-[#0ede1f] font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
+          <Link to="/AboutUsPage" className="text-xl text-slate-50 font-bold no-underline uppercase tracking-wider inline-block transition-all duration-300 ease-in-out hover:text-[#00d2ff] hover:-translate-y-1">
             About Us
           </Link>
         </li>
@@ -63,7 +55,7 @@ function Navbar() {
       {/* LOGIN BUTTON */}
       <div>
         <Link to="/login">
-          <button className="bg-[#63dc27] text-white border-2 border-black py-2 px-6 text-[15px] font-bold rounded-full cursor-pointer uppercase tracking-wider transition-all duration-300 ease-in-out hover:bg-black hover:text-[#63dc27] hover:border-[#63dc27] hover:-translate-y-0.5">
+          <button className="bg-white text-black border-2 border-black py-2 px-6 text-[15px] font-bold rounded-full cursor-pointer uppercase tracking-wider transition-all duration-300 ease-in-out hover:bg-black hover:text-gray-50 hover:border-black hover:-translate-y-0.5">
             Login
           </button>
         </Link>
