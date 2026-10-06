@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
   totalSalary: {
     type: Number,
     required: true
-
   }
+  
  });
 
  module.exports = mongoose.model('Wallet', walletSchema);  

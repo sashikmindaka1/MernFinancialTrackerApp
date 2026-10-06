@@ -1,12 +1,12 @@
-import React from "react";  
-import CardHeader from '@mui/material/CardHeader'
-import Avatar from '@mui/material/Avatar'
-import IconButton from '@mui/material/IconButton'
+import React from "react";
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
 import SpecialGoal from "../pages/SpecialGoal";
-
+  
 function BudgetReview({
   income, 
-  budget, 
+  budget,  
   foodBudget, 
   transportBudget, 
   billsBudget, 

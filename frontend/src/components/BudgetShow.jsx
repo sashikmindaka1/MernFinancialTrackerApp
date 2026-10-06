@@ -22,7 +22,8 @@ function BudgetShow({
   
   // HELPER FUNCTION: Calculates exact spending percentage and premium dynamic colors
   const getProgressDetails = (initialAllocation, currentRemaining) => {
-    if (initialAllocation <= 0) return { percent: 0, colorClass: "bg-[#00f2fe]" };
+    if (initialAllocation <= 0) 
+      return { percent: 0, colorClass: "bg-[#00f2fe]" };
 
     // Math Logic: Spent Amount = Total Budget Allocated - Remaining Balance
     const totalSpent = initialAllocation - currentRemaining;

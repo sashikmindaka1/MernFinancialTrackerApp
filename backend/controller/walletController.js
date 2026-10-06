@@ -59,7 +59,4 @@ const checkWallet = async(req, res) => {
 }
 
 // export data for ause another files
-module.exports = {
-  saveSalary,
-  checkWallet
-};
+module.exports = {saveSalary, checkWallet};
