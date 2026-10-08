@@ -10,10 +10,10 @@ function LiveUsers() {
 
   return (
     // Main Container - Dark Background
-    <div className="max-w-[1000px] mx-auto py-16 px-4 md:px-8 text-center bg-slate-950 min-h-screen font-sans">
+    <div className=" py-16 px-4 md:px-8 text-center bg-slate-950 min-h-screen font-sans">
       
       {/* Neon Text Title */}
-      <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(34,211,238,0.8)] mb-2">
+      <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 drop-shadow mb-2">
         Global Live Platform Activity
       </h2>
       <p className="text-slate-400 text-sm md:text-base mb-10">
@@ -21,14 +21,14 @@ function LiveUsers() {
       </p>
       
       {/* Table Wrapper with Neon Glow Border */}
-      <div className="overflow-x-auto bg-slate-900 rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.15)] border border-cyan-900/60">
-        <table className="w-full border-collapse text-left whitespace-nowrap">
+      <div className="w-fit mx-auto bg-slate-900 rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.15)] border border-cyan-900/60">
+        <table className=" border-collapse text-left whitespace-nowrap">
           <thead>
             <tr>
-              <th className="p-4 md:px-6 bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">User Name</th>
-              <th className="p-4 md:px-6 bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Location</th>
-              <th className="p-4 md:px-6 bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Transactions Logged</th>
-              <th className="p-4 md:px-6 bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Status</th>
+              <th className="p-6 md:px-10 text-lg bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">User Name</th>
+              <th className="p-6 md:px-10 text-lg bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Location</th>
+              <th className="p-6 md:px-10 text-lg bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Transactions Logged</th>
+              <th className="p-6 md:px-10 text-lg bg-slate-800/80 text-cyan-400 font-semibold border-b border-cyan-800/50">Status</th>
             </tr>
           </thead>
           <tbody>

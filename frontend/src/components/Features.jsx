@@ -22,17 +22,25 @@ function Features() {
 
   return (
     // Main Container - Dark Background
-    <div className="flex flex-wrap justify-center gap-8 py-16 px-8 bg-slate-950 min-h-screen">
+    <>
+    <div className='text-7xl text-gray-100 bg-slate-950 text-center font-bold pt-12'>
+      Features
+    </div>
+    <div className="flex flex-wrap justify-center gap-16 py-16 px-8 bg-slate-950 pb-40 pt-40">
+      
+         
       
       {financialFeatures.map((feature, index) => (
         // Feature Card - Dark Theme with Neon Hover Effects
+        
         <div 
           key={index} 
-          className="bg-slate-900 border border-slate-800 rounded-xl p-8 max-w-[280px] flex-[1_1_250px] 
+          className="bg-slate-800 border border-slate-800 rounded-xl p-8 max-w-[350px] flex-[1_1_250px] 
                      transition-all duration-300 ease-out 
                      hover:-translate-y-2 hover:bg-slate-800/80 hover:border-cyan-500 
                      hover:shadow-[0_12px_24px_rgba(34,211,238,0.25)]"
         >
+
           {/* Card Title - Neon Cyan */}
           <h3 className="text-cyan-400 text-xl font-semibold mt-0 mb-3 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
             {feature.title}
@@ -46,6 +54,7 @@ function Features() {
       ))}
       
     </div>
+    </>
   );
 }
 
