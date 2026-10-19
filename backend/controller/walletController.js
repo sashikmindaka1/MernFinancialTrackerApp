@@ -28,7 +28,7 @@ const saveSalary = async (req, res) => {
     
   } catch (error) {
 
-    res.status(500).json({messagr: "server error", error: error.message});
+    res.status(500).json({message: "server error", error: error.message});
     
   }
 };
@@ -48,13 +48,6 @@ const checkWallet = async(req, res) => {
     res.status(500).json({ message: "Server Error" });
     
   }
-
-
-
-
-
-
-
 
 }
 

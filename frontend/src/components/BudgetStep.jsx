@@ -62,7 +62,7 @@ function BudgetStep({
         <div className={`max-w-xl mx-auto relative flex items-center bg-[#0f1115] border rounded-xl px-5 py-4 mb-2 transition-all duration-300 ${isOverIncome ? 'border-red-500/50 focus-within:border-red-500' : 'border-slate-700 focus-within:border-[#00f2fe] focus-within:ring-1 focus-within:ring-[#00f2fe]/20'}`}>
           <span className="text-gray-500 font-bold text-xl mr-3 pointer-events-none">Rs.</span>
           <input 
-            type="number" 
+            type="number"
             placeholder="Enter your total budget" 
             value={budget} 
             max={income}

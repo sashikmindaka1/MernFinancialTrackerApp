@@ -15,7 +15,7 @@ function IncomeeStep({ income, setIncome, nextStep }) {
         console.log("salary saved sucessfully");
         nextStep();
       }
-
+                                                                                                                                                          
     } catch (error){
       const errorData = await responce.json();
       console.error("Backend error:", error);
