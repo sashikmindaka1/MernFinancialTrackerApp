@@ -118,6 +118,8 @@ function GetExpenses({
     window.location.reload();
   };
 
+
+  
   return (
     <div className="w-full p-6 bg-[#161920]/80 border border-[#232836] rounded-2xl shadow-2xl backdrop-blur-md">
       <h3 className="text-base font-bold mb-5 text-[#00f2fe] uppercase tracking-wider text-center">
